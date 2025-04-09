@@ -27,13 +27,23 @@ def list_folders(directory_path):
         print(f"Total folders: {len(folders)}")
         
     except FileNotFoundError:
-        print(f"Error: Directory '{directory_path}' not found")
+        print(f"Error: Directory {directory_path} not found")
     except PermissionError:
-        print(f"Error: Permission denied to access '{directory_path}'")
+        print(f"Error: Permission denied to access {directory_path}")
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
 if __name__ == "__main__":
-    # Get directory path from command line argument or use current directory
-    directory = sys.argv[1] if len(sys.argv) > 1 else "."
+    # Get directory path from user input
+    while True:
+        directory = input("\nEnter the directory path (or press Enter for current directory): ").strip()
+        if not directory:
+            directory = "."
+            break
+        # Remove any surrounding quotes if present
+        directory = directory.strip("'\"")
+        if os.path.isdir(directory):
+            break
+        print(f"Error: {directory} is not a valid directory. Please try again.")
+    
     list_folders(directory) 
