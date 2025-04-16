@@ -1,13 +1,13 @@
 import subprocess
+from config import week_endings
 
-print("🔁 Starting export process...")
-
-# Step 1: Get the HTML
-print("▶ Running get-webdriver.py...")
+print("🔁 Step 1: Running get-webdriver.py to fetch all HTML files...")
 subprocess.run(["python", "get-webdriver.py"], check=True)
 
-# Step 2: Parse and export CSV
-print("▶ Running parse-page-data.py...")
-subprocess.run(["python", "parse-page-data.py"], check=True)
+print("\n🧪 Step 2: Parsing each page into CSV...")
 
-print("✅ All done!")
+for week in week_endings:
+    print(f"📄 Parsing data for week ending {week}...")
+    subprocess.run(["python", "parse-page-data.py", week], check=True)
+
+print("\n🎉 All exports and parses complete!")

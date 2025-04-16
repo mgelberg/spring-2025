@@ -1,17 +1,26 @@
+import sys
 import re
 import pandas as pd
 from bs4 import BeautifulSoup
-from config import week_ending, group_by, measure, output_html_file
+from config import measure, group_by, output_html_file_template
+
+# Get the week from the command-line argument
+if len(sys.argv) != 2:
+    print("❌ Usage: python parse-page-data.py <week_ending>")
+    sys.exit(1)
+
+week_ending = sys.argv[1]
+html_file = output_html_file_template.format(week_ending)
 
 # Load the saved page source
-with open(output_html_file, "r", encoding="utf-8") as file:
+with open(html_file, "r", encoding="utf-8") as file:
     soup = BeautifulSoup(file, "html.parser")
 
-# Extract all visible text
+# Extract text
 visible_text = soup.get_text(separator="\n", strip=True)
 lines = visible_text.split("\n")
 
-# Find city table start
+# Find and parse city data
 start_index = None
 for i, line in enumerate(lines):
     if line.strip() == "City" and i + 3 < len(lines):
@@ -23,7 +32,6 @@ for i, line in enumerate(lines):
             start_index = i + 4
             break
 
-# Parse city data
 parsed_rows = []
 if start_index is not None:
     i = start_index
@@ -44,7 +52,6 @@ if start_index is not None:
         })
         i += 4
 
-# Save to CSV
 df = pd.DataFrame(parsed_rows)
 filename = f"{measure}_by_{group_by}_{week_ending}.csv"
 df.to_csv(filename, index=False)
