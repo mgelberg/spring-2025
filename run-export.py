@@ -1,13 +1,12 @@
 import subprocess
-from config import week_endings
+from config import week_endings, songs_to_scrape, group_by
 
-print("🔁 Step 1: Running get-webdriver.py to fetch all HTML files...")
+print("🔁 Step 1: Fetch all HTML files")
 subprocess.run(["python", "get-webdriver.py"], check=True)
 
-print("\n🧪 Step 2: Parsing each page into CSV...")
-
+print("\n📊 Step 2: Parse song + week combos")
 for week in week_endings:
-    print(f"📄 Parsing data for week ending {week}...")
-    subprocess.run(["python", "parse-page-data.py", week], check=True)
+    for song in songs_to_scrape:
+        subprocess.run(["python", "parse-page-data.py", week, song["id"], group_by], check=True)
 
-print("\n🎉 All exports and parses complete!")
+print("\n✅ All done!")
