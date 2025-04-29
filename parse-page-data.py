@@ -2,7 +2,8 @@ import sys
 import re
 import pandas as pd
 from bs4 import BeautifulSoup
-from config import output_html_file_template, songs_to_scrape, measure
+from config import output_html_file_template, songs_to_scrape, measure, output_csv_file_template
+import os
 
 def parse_file(week, song_id, group_by):
     html_file = output_html_file_template.format(week=week, song_id=song_id, group_by=group_by)
@@ -64,8 +65,12 @@ def main():
 
     #df = pd.DataFrame(rows)
     df = parse_file(week, song_id, group_by) #gets dataframe directly
-    outfile = f"{measure}_by_{group_by}_{song_id}_{week}.csv"
-    df.to_csv(outfile, index=False)
+    csv_file = output_csv_file_template.format(
+    week=week, song_id=song_id, group_by=group_by, measure=measure
+    )
+    os.makedirs(os.path.dirname(csv_file), exist_ok=True)
+    #outfile = f"{measure}_by_{group_by}_{song_id}_{week}.csv"
+    df.to_csv(csv_file, index=False)
     print(f"✅ Parsed and saved: {outfile}")
 
 if __name__ == "__main__":

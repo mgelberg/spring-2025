@@ -11,3 +11,4 @@ kiwisolver==1.4.8
 matplotlib==3.10.1
 pillow==11.2.1
 pyparsing==3.2.3
+seaborn==0.13.2
