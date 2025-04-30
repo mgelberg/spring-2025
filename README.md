@@ -1,117 +1,148 @@
-📚 Project Overview
-This project automates the export and parsing of historical performance data from Apple Music for Artists, including plays, listeners, and (optionally) other metrics like Shazams.
+# 🎧 Apple Music for Artists Scraping System
 
-The system is modular, resumable, and extensible for multiple measures.
+Automate the export and parsing of granular Apple Music for Artists data, including plays, listeners, and more — by song, city, and time period.
 
-🏗️ System Components
+This modular scraping suite is:
 
-Script	Purpose
-config.py	Centralized static config (artist ID, output templates, song list)
-get-webdriver.py	Logs in to Apple Music for Artists, scrapes page source HTML files for all songs, weeks, and measures
-parse-page-data.py	Parses saved HTML into clean CSV files
-run-export.py	Orchestrates scraping and parsing for the full dataset
-⚙️ Configuration (Static Imports)
-These settings are imported because they should remain constant across runs:
+- ⏱️ Time-aware (won’t scrape pre-release data)
+- 📂 Organized (HTML and CSV outputs in separate folders)
+- 🧠 Smart (skips existing files unless forced)
+- 🧰 Extensible (multi-measure and multi-grouping ready)
 
-artist_id
+---
 
-output_html_file_template
+## 🧱 Project Structure
 
-output_csv_file_template
+project-root/ ├── html outputs/ # Scraped raw HTML pages ├── parsed csvs/ # Parsed data exports ├── config.py # Static project-wide settings ├── get-webdriver.py # Scrapes HTML data ├── parse-page-data.py # Parses HTML into CSV ├── run-export.py # Orchestrates scrape + parse └── README.md
 
-songs_to_scrape
 
-sortKey, sortOrder, zoom
+---
 
-group_by
+## ⚙️ Configuration (via `config.py`)
 
-✅ Centralized control
-✅ No need to pass these dynamically each time
+Static project-wide settings like:
 
-🚀 Dynamic Settings (Passed via CLI)
-These settings are passed as CLI arguments because they change per run:
+- `artist_id`
+- `songs_to_scrape`: list of song names, IDs, and release dates
+- `measures = ["plays", "listeners"]`
+- `output_html_file_template` and `output_csv_file_template`
+- `group_by`, `sort_key`, `sort_order`, `zoom`
+- Week calculation logic based on last full Friday and release dates
 
-week
+You may enable a **debug mode** by uncommenting the "small batch" block near the bottom to test just a couple songs and weeks.
 
-song_id
+---
 
-group_by
+## 🚀 How to Use
 
-measure
+### 1. Scrape all HTMLs (skips existing files unless forced)
 
---force (overwrite protection)
+```bash
+python get-webdriver.py
 
-✅ Maximum flexibility
-✅ Script can adapt to different runs without editing code
 
-🔁 How the System Works
-Scraping
+---
 
-get-webdriver.py automatically loops over:
+## ⚙️ Configuration (via `config.py`)
 
-All songs in songs_to_scrape
+Static project-wide settings like:
 
-All valid weeks after release date
+- `artist_id`
+- `songs_to_scrape`: list of song names, IDs, and release dates
+- `measures = ["plays", "listeners"]`
+- `output_html_file_template` and `output_csv_file_template`
+- `group_by`, `sort_key`, `sort_order`, `zoom`
+- Week calculation logic based on last full Friday and release dates
 
-All measures in measures
+You may enable a **debug mode** by uncommenting the "small batch" block near the bottom to test just a couple songs and weeks.
 
-It saves page source files in html outputs/, named with {measure}, {week}, {song_id}, and {group_by}.
+---
 
-Parsing
+## 🚀 How to Use
 
-run-export.py triggers parse-page-data.py for each song-week-measure combo.
+### 1. Scrape all HTMLs (skips existing files unless forced)
 
-parse-page-data.py extracts city-level data and saves it to parsed csvs/ folder.
+```bash
+python get-webdriver.py
 
-Skips parsing if CSV already exists, unless --force is used.
-
-🔑 Example Commands
-Scraping all HTMLs:
+To force re-scrape all pages, even if files already exist:
 
 bash
 Copy
 Edit
-python get-webdriver.py
-Parsing all data:
+python get-webdriver.py --force
 
+2. Parse all available data into CSVs
 bash
 Copy
 Edit
 python run-export.py
-Parsing a single song manually (example):
+To force overwrite all CSVs:
 
 bash
 Copy
 Edit
-python parse-page-data.py 20250411 1807227251 city plays --force
-📋 Project Structure
-arduino
+python run-export.py --force
+3. Parse a single file manually (e.g. That Thing, listeners, Apr 11–17)
+bash
 Copy
 Edit
-project-root/
-├── html outputs/        # Scraped HTML files
-├── parsed csvs/          # Parsed CSV files
-├── config.py
-├── get-webdriver.py
-├── parse-page-data.py
-├── run-export.py
-└── README.md             # (this document)
-🧠 Design Best Practices
-CLI args for dynamic settings: ensures flexibility without hardcoding.
+python parse-page-data.py 20250411 1807227251 city listeners --force
+✅ Force Mode: When and Why
+Use --force to:
 
-Imports for static configuration: centralizes key constants.
+Re-download already-saved HTML files
 
-Force flags: protect against accidental overwrites, but allow manual refreshes.
+Re-parse and overwrite already-created CSV files
 
-Directory structure enforced: html outputs/ and parsed csvs/ automatically created if missing.
+Debug a specific run without deleting files manually
 
-Resumable scraping and parsing: system skips already completed files automatically.
+If not used, the system will skip any work that’s already done.
 
-✨ Future Extensions
-Add new measures (e.g., Shazams, Impressions) by simply adding to measures = [...]
+💡 Design Best Practices
 
-Support scraping new grouping types (country, source, etc.)
+Principle	What we do
+Dynamic values	Passed via CLI (e.g. week, measure, --force)
+Static config	Centralized in config.py
+Skipping logic	Files are skipped unless forced
+Folder structure	Separate for HTML and CSVs
+Multi-measure support	Loop over measures = [...]
+Smart date logic	Scrapes only post-release
+🧠 Extend This System
+Want to add new metrics? Just edit:
 
-Build velocity models and city-based heatmaps from parsed data
+python
+Copy
+Edit
+measures = ["plays", "listeners", "shazams", "impressions"]
+Want to scrape new groupings (e.g. by country or source)? Change:
 
-✅ Last Updated: August 2025
+python
+Copy
+Edit
+group_by = "city"
+📊 Scraping Schedule Preview
+If you want to preview what will be scraped per run, uncomment this inside get-webdriver.py:
+
+python
+Copy
+Edit
+print("📊 Scraping Schedule Overview:")
+for song in songs_to_scrape:
+    valid_weeks = get_valid_weeks_for_song(song)
+    print(f"🎵 {song['name']} — {song['release_date']} — {len(valid_weeks)} weeks pulled")
+🧪 Troubleshooting
+Missing login? → The script pauses and asks you to log in manually once per session.
+
+Getting empty CSVs? → Check if the HTML structure changed (Apple may have updated their frontend).
+
+Debugging one-off? → Use parse-page-data.py directly on a single file.
+
+Last updated: August 2025
+
+yaml
+Copy
+Edit
+
+---
+
