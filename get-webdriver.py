@@ -8,112 +8,118 @@ from config import (
     , artist_id
     , sort_key
     , sort_order
-    , measure
+    , measures
     , zoom
     , group_by
     , output_html_file_template
     , get_valid_weeks_for_song
 ) #removed song_id
 import os
+import argparse
 
 
 # Optional: add city rows or other filter options as needed
 rows = ["2643743", "4930956", "6167865", "4887398", "5812944"]
 
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--force", action="store_true", help="Force re-download HTML files")
+    return parser.parse_args()
+
 def main():
+    args = parse_args()
+    force = args.force
+    
+
+ 
+    print("📊 Scraping Schedule Overview:")
+    
+    for song in songs_to_scrape:
+        valid_weeks = get_valid_weeks_for_song(song)
+        print(f"🎵 {song['name']} — {song['release_date']} — {len(valid_weeks)} weeks pulled")
+
+    # Check what actually needs scraping
+    pending_scrapes = []
+    for measure in measures:
+        for song in songs_to_scrape:
+            song_id = song["id"]
+            valid_weeks = get_valid_weeks_for_song(song)
+
+            for week in valid_weeks:
+                html_file = output_html_file_template.format(
+                    week=week, song_id=song_id, group_by=group_by, measure=measure
+                )
+                if not os.path.exists(html_file) or force:
+                    pending_scrapes.append((measure, song, week, html_file))
+    
+    if not pending_scrapes:  # NEW
+        print("✅ No new HTML files to scrape. Everything is already up to date.")
+        return  # NEW
+
     # Start browser once
     print("Starting browser...")
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-    # Track total scrapes and time
-    total_scrapes = sum(len(get_valid_weeks_for_song(song)) for song in songs_to_scrape)
-    current_scrape = 0
-    start_time = time.time()
-
-    print("📊 Scraping Schedule Overview:")
-    for song in songs_to_scrape:
-        valid_weeks = get_valid_weeks_for_song(song)
-        print(f"🎵 {song['name']} — {song['release_date']} — {len(valid_weeks)} weeks pulled")
-
-    # Visit the first week URL for manual login
-    initial_song = songs_to_scrape[0]
-    initial_week = get_valid_weeks_for_song(initial_song)[0]
-    initial_song_id = initial_song["id"]    
-
-    base_url = f"https://artists.apple.com/ui/measure/artist/{artist_id}/trends"
-    params = (
-        f"?period=w~{initial_week}"
+    # Manual login flow
+    first_measure, first_song, first_week, _ = pending_scrapes[0]  # NEW
+    song_id = first_song["id"]
+    login_url = (
+        f"https://artists.apple.com/ui/measure/artist/{artist_id}/trends"
+        f"?period=w~{first_week}"
         f"&sortKey={sort_key}"
         f"&sortOrder={sort_order}"
-        f"&measure={measure}"
+        f"&measure={first_measure}"
         f"&zoom={zoom}"
-        f"&filter=song~{initial_song_id}"
+        f"&filter=song~{song_id}"
         f"&groupBy={group_by}"
         f"&annotationsVisible=true"
     )
 
-    print(f"🔗 Navigating to login page for week {initial_week}...")
-    driver.get(base_url + params)
+    print(f"🔗 Navigating to login page for week {first_week}...")
+    driver.get(login_url)
 
     input("💬 Log in manually, then press ENTER to start scraping...")
 
-    # Loop over week + song
-
-    for song in songs_to_scrape:
+    start_time = time.time()
+    for i, (measure, song, week, html_file) in enumerate(pending_scrapes):
         song_id = song["id"]
         song_name = song["name"]
 
-        valid_weeks = get_valid_weeks_for_song(song)
+        print(f"\n🎧 Scraping: {song_name} | Week: {week} | Measure: {measure}")  # CHANGED
 
-        for week in valid_weeks:
+        url = (
+            f"https://artists.apple.com/ui/measure/artist/{artist_id}/trends"
+            f"?period=w~{week}"
+            f"&sortKey={sort_key}"
+            f"&sortOrder={sort_order}"
+            f"&measure={measure}"
+            f"&zoom={zoom}"
+            f"&filter=song~{song_id}"
+            f"&groupBy={group_by}"
+            f"&annotationsVisible=true"
+        )
 
-            print(f"\n🎧 Scraping: {song_name} | Week: {week}")
+        driver.get(url)
+        time.sleep(random.uniform(10, 19))
 
-            base_url = f"https://artists.apple.com/ui/measure/artist/{artist_id}/trends"
-            params = (
-                f"?period=w~{week}"
-                f"&sortKey={sort_key}"
-                f"&sortOrder={sort_order}"
-                f"&measure={measure}"
-                f"&zoom={zoom}"
-                f"&filter=song~{song_id}"
-                f"&groupBy={group_by}"
-                f"&annotationsVisible=true"
-            )
+        os.makedirs(os.path.dirname(html_file), exist_ok=True)
+        with open(html_file, "w", encoding="utf-8") as f:
+            f.write(driver.page_source)
 
-            driver.get(base_url + params)
-            sleep_time = random.uniform(10,19)
-            time.sleep(sleep_time)
-
-            html_file = output_html_file_template.format(
-                week=week, song_id=song_id, group_by=group_by, measure=measure
-            )
-            
-            os.makedirs(os.path.dirname(html_file), exist_ok=True)
-
-            with open(html_file, "w", encoding="utf-8") as f:
-                f.write(driver.page_source)
-            
-            current_scrape += 1
-            elapsed = time.time() - start_time
-            avg_time_per_scrape = elapsed / current_scrape
-            remaining = total_scrapes - current_scrape
-            eta_seconds = int(avg_time_per_scrape * remaining)
-            eta_min = eta_seconds // 60
-            eta_sec = eta_seconds % 60
-
-            progress_pct = round((current_scrape / total_scrapes) * 100)
-
-            print(
-                f"✅ Saved HTML to {html_file}"
-                f"({current_scrape}/{total_scrapes} - {progress_pct}% complete) "
-                f"⏳ ETA: {eta_min}m {eta_sec}s"
-            )
+        elapsed = time.time() - start_time
+        progress = i + 1
+        eta = int((elapsed / progress) * (len(pending_scrapes) - progress))
+        print(
+            f"✅ Saved HTML to {html_file} "
+            f"({progress}/{len(pending_scrapes)} — {round(100 * progress / len(pending_scrapes))}% complete) "
+            f"⏳ ETA: {eta // 60}m {eta % 60}s"
+        )
 
     driver.quit()
-    print("\n🎉 All pages scraped.")
+    print("\n🎉 All scraping complete.")
+
 
 if __name__ == "__main__":
     main()
