@@ -1,4 +1,9 @@
-# macOS system files
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# macOS
 .DS_Store
 .DS_Store?
 ._*
@@ -6,4 +11,17 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Data directories
+html outputs/
+parsed csvs/
+
+# Virtual environment
 venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
