@@ -2,113 +2,118 @@
 
 Automate the export and parsing of granular Apple Music for Artists data, including plays, listeners, and more — by song, city, and time period.
 
-This modular scraping suite is:
+## ✨ Features
 
-- ⏱️ Time-aware (won’t scrape pre-release data)
+- ⏱️ Time-aware (won't scrape pre-release data)
 - 📂 Organized (HTML and CSV outputs in separate folders)
 - 🧠 Smart (skips existing files unless forced)
 - 🧰 Extensible (multi-measure and multi-grouping ready)
+- 🔍 Debug-friendly (optional URL logging)
+- 📊 Data-driven (organized data storage)
+- 🔄 Efficient (skips existing files with data)
+- 🛠️ Modular (core logic centralized in config.py)
 
----
+## 🏗️ Project Structure
 
-## 🧱 Project Structure
+    project-root/
+    ├── data/                    # All CSV data files
+    ├── html outputs/           # Scraped raw HTML pages
+    ├── parsed csvs/            # Parsed data exports
+    ├── config.py               # Core configuration and scraping logic
+    ├── get-monthly-streams-apple.py  # Monthly data scraping
+    ├── get-weekly-streams-apple.py   # Weekly data scraping
+    ├── parse-page-data.py      # HTML to CSV parsing
+    ├── run-export.py           # Main execution script
+    ├── check-status.py         # Status checking
+    ├── analyze_data.py         # Data analysis
+    ├── build-song-velocity.py  # Song velocity calculations
+    ├── get-song-ids.py         # Song ID retrieval
+    ├── list_folders.py         # Directory management
+    ├── requirements.txt        # Dependencies
+    └── README.md              # Documentation
 
-project-root/ ├── html outputs/ # Scraped raw HTML pages ├── parsed csvs/ # Parsed data exports ├── config.py # Static project-wide settings ├── get-webdriver.py # Scrapes HTML data ├── parse-page-data.py # Parses HTML into CSV ├── run-export.py # Orchestrates scrape + parse └── README.md
+## ⚙️ Configuration
 
+All static project-wide settings are centralized in `config.py`:
 
----
+- Artist and song configurations
+- Measurement types
+- Output templates
+- Grouping and sorting preferences
+- Date calculation logic
+- Core scraping functionality
+- File management utilities
 
-## ⚙️ Configuration (via `config.py`)
+## 🚀 Usage
 
-Static project-wide settings like:
-
-- `artist_id`
-- `songs_to_scrape`: list of song names, IDs, and release dates
-- `measures = ["plays", "listeners"]`
-- `output_html_file_template` and `output_csv_file_template`
-- `group_by`, `sort_key`, `sort_order`, `zoom`
-- Week calculation logic based on last full Friday and release dates
-
-You may enable a **debug mode** by uncommenting the "small batch" block near the bottom to test just a couple songs and weeks.
-
----
-
-## 🚀 How to Use
-
-### 1. Scrape all HTMLs (skips existing files unless forced)
+### Basic Scraping
 
 ```bash
-python get-webdriver.py
-```
+# Weekly data
+python get-weekly-streams-apple.py
 
-To force re-scrape all pages, even if files already exist:
+# Monthly data
+python get-monthly-streams-apple.py
 
-```python get-webdriver.py --force
-```
-
-### 2. Parse all available data into CSVs
-bash
-Copy
-Edit
+# Parse data into CSVs
 python run-export.py
-To force overwrite all CSVs:
-
-bash
-Copy
-Edit
-python run-export.py --force
-### 3. Parse a single file manually (e.g. That Thing, listeners, Apr 11–17)
-```bash
-python parse-page-data.py 20250411 1807227251 city listeners --force
 ```
-## **✅ Force Mode: When and Why**
-Use --force to:
 
-Re-download already-saved HTML files
+### Advanced Options
 
-Re-parse and overwrite already-created CSV files
+```bash
+# Force re-scrape existing files
+python get-weekly-streams-apple.py --force
 
-Debug a specific run without deleting files manually
+# Enable URL logging for debugging
+python get-monthly-streams-apple.py --log-urls
 
-If not used, the system will skip any work that’s already done.
+# Parse specific file
+python parse-page-data.py [date] [song_id] [grouping] [measure] --force
+```
 
-## **💡 Design Best Practices**
+## 🛠️ Development
 
-Principle	What we do
-Dynamic values	Passed via CLI (e.g. week, measure, --force)
-Static config	Centralized in config.py
-Skipping logic	Files are skipped unless forced
-Folder structure	Separate for HTML and CSVs
-Multi-measure support	Loop over measures = [...]
-Smart date logic	Scrapes only post-release
-**🧠 Extend This System**
-Want to add new metrics? Just edit:
-
+### Adding New Metrics
+Edit `config.py`:
 ```python
 measures = ["plays", "listeners", "shazams", "impressions"]
 ```
-Want to scrape new groupings (e.g. by country or source)? Change:
 
+### Changing Groupings
+Modify in `config.py`:
 ```python
-group_by = "city"
+group_by = "city"  # or "country", "source", etc.
 ```
-## **📊 Scraping Schedule Preview**
-If you want to preview what will be scraped per run, uncomment this inside get-webdriver.py:
 
-```python
+## �� Troubleshooting
 
-print("📊 Scraping Schedule Overview:")
-for song in songs_to_scrape:
-    valid_weeks = get_valid_weeks_for_song(song)
-    print(f"🎵 {song['name']} — {song['release_date']} — {len(valid_weeks)} weeks pulled")
-```
-## **🧪 Troubleshooting**
-Missing login? → The script pauses and asks you to log in manually once per session.
+- **Login Issues**: Script will pause for manual login if needed
+- **Empty CSVs**: Check for HTML structure changes in Apple's frontend
+- **Debug Mode**: Use `--log-urls` flag to see requested URLs
+- **Force Mode**: Use `--force` to re-scrape/parse existing files
+- **File Skipping**: System automatically skips existing files with data
+- **Error Recovery**: Improved error handling and logging
 
-Getting empty CSVs? → Check if the HTML structure changed (Apple may have updated their frontend).
+## 📊 Data Organization
 
-Debugging one-off? → Use parse-page-data.py directly on a single file.
+- Raw HTML files are stored in `html outputs/`
+- Parsed CSV files are stored in `parsed csvs/`
+- All data files are organized in `data/` directory
+- Each export maintains consistent naming conventions
 
+## 🔄 Workflow
 
+1. Configure settings in `config.py`
+2. Run scraping scripts for desired time periods
+3. Parse data using `run-export.py`
+4. Analyze results using provided utility scripts
 
+## 🔧 Recent Improvements
 
+- Centralized scraping logic in `config.py`
+- Optimized file checking and skipping
+- Enhanced debugging capabilities
+- Improved error handling
+- Better organization of output files
+- Streamlined scraping process
