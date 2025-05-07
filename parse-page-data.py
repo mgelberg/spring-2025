@@ -6,16 +6,16 @@ from config import output_html_file_template, songs_to_scrape, output_csv_file_t
 import argparse
 import os
 
-def parse_file(week, song_id, group_by, measure, force=False):
+def parse_file(week, song_id, group_by, measure, period_type='weekly', force=False):
     csv_file = output_csv_file_template.format(
-    week=week, song_id=song_id, group_by=group_by, measure=measure
+    week=week, song_id=song_id, group_by=group_by, measure=measure, period_type=period_type
     )
 
     if os.path.exists(csv_file) and not force:
         print(f"🟡 Skipping (already parsed): {csv_file}")
         return None
     
-    html_file = output_html_file_template.format(week=week, song_id=song_id, group_by=group_by, measure=measure)
+    html_file = output_html_file_template.format(week=week, song_id=song_id, group_by=group_by, measure=measure, period_type=period_type)
     song_name = next((s["name"] for s in songs_to_scrape if s["id"] == song_id), "Unknown")
 
     # Load HTML and parse
@@ -78,11 +78,12 @@ def parse_args():  # NEW
     parser.add_argument("group_by", help="Group by dimension (e.g. city)")
     parser.add_argument("measure", help="Measure (e.g. plays, listeners)")  # NEW
     parser.add_argument("--force", action="store_true", help="Force re-parse even if file exists")  # NEW
+    parser.add_argument("period_type", help="weekly or monthly")
     return parser.parse_args()
 
 def main():
     args = parse_args()  # NEW
-    parse_file(args.week, args.song_id, args.group_by, args.measure, force=args.force)  # CHANGED
+    parse_file(args.week, args.song_id, args.group_by, args.measure, args.period_type, force=args.force)  # CHANGED
 
 if __name__ == "__main__":
     main()

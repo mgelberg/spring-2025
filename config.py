@@ -1,10 +1,15 @@
 # config.py
 from datetime import datetime, timedelta
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+import random
 import os
+import argparse
 
 # Base config for trends page
 artist_id = "ami:identity:e6a35f7117e0ed7c0939675639157300"
-measures = ["plays","listeners"]
 
 sort_key = "total"
 sort_order = "desc"
@@ -12,11 +17,86 @@ zoom = "d"
 song_id = "1807227249"
 group_by = "city"
 
-# Output filename pattern
-#output_html_file_template = "page_source_{week}_{song_id}_by_{group_by}.html"
+def get_common_parser():
+    """Get common argument parser for all scraping scripts"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--force", action="store_true", help="Force re-download HTML files")
+    parser.add_argument("--measures", nargs="+", choices=["listeners", "plays"], required=True,
+                       help="Which measures to scrape (listeners and/or plays)")
+    parser.add_argument("--levels", nargs="+", choices=["song", "artist"], required=True,
+                       help="Which levels to scrape (song and/or artist)")
+    return parser
 
-output_html_file_template = "html outputs/page_source_{measure}_{week}_{song_id}_by_{group_by}.html"
-output_csv_file_template = "parsed csvs/{measure}_by_{group_by}_{song_id}_{week}.csv"
+def build_scrape_url(period_value, song_id=None, measure=None, period_type="weekly", level="song"):
+    """Build URL for scraping with proper period format"""
+    if measure is None:
+        raise ValueError("Measure is required")
+    if period_type not in ["weekly", "monthly"]:
+        raise ValueError("period_type must be 'weekly' or 'monthly'")
+    if level not in ["song", "artist"]:
+        raise ValueError("level must be 'song' or 'artist'")
+    
+    period_prefix = "m" if period_type == "monthly" else "w"
+    period_value_for_url = period_value[:6] if period_type == "monthly" else period_value
+    
+    url = (
+        f"https://artists.apple.com/ui/measure/artist/{artist_id}/trends"
+        f"?period={period_prefix}~{period_value_for_url}"
+        f"&sortKey={sort_key}"
+        f"&sortOrder={sort_order}"
+        f"&measure={measure}"
+        f"&zoom={zoom}"
+        f"&groupBy={group_by}"
+        f"&annotationsVisible=true"
+    )
+    
+    if level == "song" and song_id:
+        url += f"&filter=song~{song_id}"
+    
+    return url
+
+def start_logged_in_browser(url):
+    """Start browser and wait for manual login"""
+    options = webdriver.ChromeOptions()
+    options.add_argument("--start-maximized")
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    
+    print(f"🔗 Navigating to login page...")
+    driver.get(url)
+    input("💬 Log in manually, then press ENTER to start scraping...")
+    return driver
+
+def scrape_file(driver, url, output_path):
+    """Scrape single file and save HTML"""
+    try:
+        print(f"🌐 Requesting URL: {url}")
+        driver.get(url)
+        time.sleep(random.uniform(10, 19))
+        
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(driver.page_source)
+        print(f"✅ Saved HTML to {output_path}")
+    except Exception as e:
+        print(f"❌ Error scraping {url}: {str(e)}")
+        raise
+
+def print_progress(i, total, start_time):
+    """Print progress with ETA"""
+    elapsed = time.time() - start_time
+    progress = i + 1
+    eta = int((elapsed / progress) * (total - progress))
+    print(
+        f"📊 Progress: {progress}/{total} "
+        f"({round(100 * progress / total)}%) "
+        f"⏳ ETA: {eta // 60}m {eta % 60}s"
+    )
+
+# Output filename pattern
+
+output_html_file_template = "html outputs/page_source_{period_type}_{measure}_{week}_{song_id}_by_{group_by}.html"  # CHANGED
+output_csv_file_template  = "parsed csvs/{period_type}_{measure}_by_{group_by}_{song_id}_{week}.csv"  # CHANGED
+
 
 # Songs to scrape (paste from earlier)
 songs_to_scrape = [
@@ -61,8 +141,25 @@ raw_week_endings = generate_raw_week_ending()
 
 # Utility: filter weeks to only include those on/after the song's release
 def get_valid_weeks_for_song(song):
+    """Get valid weeks for a song based on its release date."""
     release_dt = datetime.strptime(song["release_date"], "%Y%m%d")
     return [w for w in raw_week_endings if datetime.strptime(w, "%Y%m%d") >= release_dt]
+
+# Generate 1st-of-month dates from earliest release to now
+def generate_month_start_dates():
+    """Generate 1st-of-month dates from earliest release to now."""
+    earliest = min(datetime.strptime(song["release_date"], "%Y%m%d") for song in songs_to_scrape)
+    latest = get_last_full_friday()
+    current = datetime(earliest.year, earliest.month, 1)
+    dates = []
+    while current <= latest:
+        dates.append(current.strftime("%Y%m01"))
+        # Move to next month
+        if current.month == 12:
+            current = datetime(current.year + 1, 1, 1)
+        else:
+            current = datetime(current.year, current.month + 1, 1)
+    return sorted(dates, reverse=True)
 
 # --- 🔬 Optional Small-Batch Debugging Block ---
 
@@ -73,3 +170,19 @@ def get_valid_weeks_for_song(song):
 # ]
 # raw_week_endings = ["20250411", "20250404"]
 # measures = ["listeners"]
+
+def get_song_id_for_level(level, song_id):
+    """Get the appropriate song_id value based on level"""
+    if level == "artist":
+        return "artist"
+    return song_id
+
+def get_file_path(period_type, measure, period_value, level, song_id, group_by):
+    """Generate the appropriate file path based on all parameters"""
+    return output_html_file_template.format(
+        period_type=period_type,
+        measure=measure,
+        week=period_value,
+        song_id=get_song_id_for_level(level, song_id),
+        group_by=group_by
+    )
