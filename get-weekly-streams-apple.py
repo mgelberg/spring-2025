@@ -1,8 +1,6 @@
 from config import (
     songs_to_scrape,
     group_by,
-    output_html_file_template,
-    get_valid_weeks_for_song,
     get_common_parser,
     build_scrape_url,
     start_logged_in_browser,
@@ -12,7 +10,6 @@ from config import (
 )
 import time
 import os
-
 
 def parse_args():
     parser = get_common_parser()
@@ -24,38 +21,38 @@ def main():
     measures = args.measures
     levels = args.levels
     
-    # Get valid weeks for each song
-    periods_by_song = {
-        song["id"]: get_valid_weeks_for_song(song) for song in songs_to_scrape
-    }
-    
-    # Print scraping plan
-    print("\n📋 Weekly Scraping Plan:")
-    for song in songs_to_scrape:
-        song_id = song["id"]
-        periods = periods_by_song[song_id]
-        print(f" {song['name']} — {len(periods)} weeks to scrape")
-    
     # Check what needs scraping
     pending_scrapes = []
     for measure in measures:
-        for song in songs_to_scrape:
-            song_id = song["id"]
-            periods = periods_by_song[song_id]
-            
-            for period_value in periods:
-                for level in levels:
+        for level in levels:
+            if level == "artist":
+                # For artist level, use raw_week_endings
+                for period_value in raw_week_endings:
                     html_file = get_file_path(
                         period_type="weekly",
                         measure=measure,
                         period_value=period_value,
                         level=level,
-                        song_id=song_id,
+                        song_id="artist",
                         group_by=group_by
                     )
-                    
                     if not os.path.exists(html_file) or args.force:
-                        pending_scrapes.append((level, song, period_value, html_file, measure))
+                        pending_scrapes.append((level, None, period_value, html_file, measure))
+            else:
+                # For song level, iterate through songs
+                for song in songs_to_scrape:
+                    song_id = song["id"]
+                    for period_value in get_valid_weeks_for_song(song):
+                        html_file = get_file_path(
+                            period_type="weekly",
+                            measure=measure,
+                            period_value=period_value,
+                            level=level,
+                            song_id=song_id,
+                            group_by=group_by
+                        )
+                        if not os.path.exists(html_file) or args.force:
+                            pending_scrapes.append((level, song, period_value, html_file, measure))
     
     if not pending_scrapes:
         print("✅ No new HTML files to scrape. Everything is already up to date.")

@@ -1,13 +1,23 @@
 import subprocess
 import argparse
 import sys
+import os
 from config import (
-    songs_to_scrape
-    , group_by
-    , get_valid_weeks_for_song
-    , generate_month_start_dates
-    , measures as all_measures
+    songs_to_scrape,
+    group_by,
+    get_valid_weeks_for_song,
+    raw_week_endings,
+    raw_month_starts,
+    get_file_path,
+    build_scrape_url,
+    start_logged_in_browser,
+    scrape_file,
+    print_progress,
+    build_pending_scrapes,
+    print_scraping_plan,
+    get_existing_parsed_files
 )
+import time
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -45,15 +55,26 @@ def run_command(cmd, step_name):
     """Run a command and handle any errors"""
     try:
         print(f"\n🔁 {step_name}")
-        result = subprocess.run(cmd, check=True, capture_output=True, text=True)
-        print(result.stdout)
+        # Use Popen with all streams connected to terminal
+        process = subprocess.Popen(
+            cmd,
+            stdout=None,  # Use None to connect to terminal
+            stderr=None,  # Use None to connect to terminal
+            stdin=None,   # Use None to connect to terminal
+            universal_newlines=True
+        )
+        
+        # Wait for the process to complete
+        return_code = process.wait()
+        
+        if return_code != 0:
+            print(f"❌ Error in {step_name}:")
+            print(f"   Command: {' '.join(cmd)}")
+            print(f"   Exit code: {return_code}")
+            return False
+            
         return True
-    except subprocess.CalledProcessError as e:
-        print(f"❌ Error in {step_name}:")
-        print(f"   Command: {' '.join(cmd)}")
-        print(f"   Exit code: {e.returncode}")
-        print(f"   Error output: {e.stderr}")
-        return False
+        
     except Exception as e:
         print(f"❌ Unexpected error in {step_name}:")
         print(f"   {str(e)}")
@@ -65,21 +86,9 @@ def main():
     # Get user choices
     data_type, measure_choice, level_choice = get_user_choices()
     
-    # Set measures based on user choice
-    if measure_choice == 'l':
-        measures = ["listeners"]
-    elif measure_choice == 'p':
-        measures = ["plays"]
-    else:  # both
-        measures = ["listeners", "plays"]
-    
-    # Set levels based on user choice
-    if level_choice == 's':
-        levels = ["song"]
-    elif level_choice == 'a':
-        levels = ["artist"]
-    else:  # both
-        levels = ["song", "artist"]
+    # Set measures and levels
+    measures = ["listeners"] if measure_choice == 'l' else ["plays"] if measure_choice == 'p' else ["listeners", "plays"]
+    levels = ["song"] if level_choice == 's' else ["artist"] if level_choice == 'a' else ["song", "artist"]
     
     # Add feedback about choices
     print(f"\n📋 Selected options:")
@@ -87,43 +96,103 @@ def main():
     print(f"   Measures: {', '.join(measures)}")
     print(f"   Levels: {', '.join(levels)}")
 
-    # Step 1: Fetch HTML files
-    if data_type == 'm':
-        html_cmd = ["python", "get-monthly-streams-apple.py", "--measures"] + measures + ["--levels"] + levels
-    else:
-        html_cmd = ["python", "get-weekly-streams-apple.py", "--measures"] + measures + ["--levels"] + levels
-    
-    if args.force:
-        html_cmd.append("--force")
-    
-    if not run_command(html_cmd, "Step 1: Fetch all HTML files"):
-        print("❌ Failed to fetch HTML files. Exiting.")
-        sys.exit(1)
+    # Print scraping plan
+    print_scraping_plan(level_choice, data_type)
 
-    # Step 2: Parse files
-    period_type = "monthly" if data_type == 'm' else "weekly"
+    # Build pending scrapes list
+    pending_scrapes = build_pending_scrapes(measures, levels, data_type, args.force)
+
+    if not pending_scrapes:
+        print("✅ No new HTML files to scrape. Everything is already up to date.")
+    else:
+        # Start browser and scrape
+        first_scrape = pending_scrapes[0]
+        first_url = build_scrape_url(
+            first_scrape[2],
+            first_scrape[1]["id"] if first_scrape[0] == "song" else None,
+            measure=first_scrape[4],
+            period_type="monthly" if data_type == 'm' else "weekly"
+        )
+        driver = start_logged_in_browser(first_url)
+        
+        # Scrape files
+        start_time = time.time()
+        for i, (level, song, period_value, html_file, measure) in enumerate(pending_scrapes):
+            url = build_scrape_url(
+                period_value,
+                song["id"] if level == "song" else None,
+                measure=measure,
+                period_type="monthly" if data_type == 'm' else "weekly"
+            )
+            
+            scrape_file(driver, url, html_file)
+            print_progress(i, len(pending_scrapes), start_time)
+        
+        driver.quit()
+        print("\n🎉 All scraping complete.")
+
+    # Parse files
     parse_success = True
+    existing_parsed_files = get_existing_parsed_files()  # Get set of already parsed files
     
     for measure in measures:
-        for song in songs_to_scrape:
-            song_id = song["id"]
-            periods = generate_month_start_dates() if data_type == 'm' else get_valid_weeks_for_song(song)
-
-            for period in periods:
-                for level in levels:
+        for level in levels:
+            if level == "artist":
+                periods = raw_month_starts if data_type == 'm' else raw_week_endings
+                for period in periods:
+                    file_key = (
+                        "monthly" if data_type == 'm' else "weekly",
+                        measure,
+                        group_by,
+                        "artist",
+                        period
+                    )
+                    if file_key in existing_parsed_files and not args.force:
+                        continue
+                        
                     cmd = ["python", "parse-page-data.py",
                            period,
-                           song_id,
+                           "artist",
                            group_by,
-                           measure,
-                           period_type,
-                           level]  # Add level parameter
+                           "monthly" if data_type == 'm' else "weekly",
+                           level,
+                           "--measures", measure,
+                           "--levels", level]
                     if args.force:
                         cmd.append("--force")
                     
-                    if not run_command(cmd, f"Parsing {level} level data for {song['name']} - {period}"):
+                    if not run_command(cmd, f"Parsing {level} level data for {period}"):
                         parse_success = False
                         print(f"⚠️  Continuing with next file...")
+            else:
+                for song in songs_to_scrape:
+                    song_id = song["id"]
+                    periods = raw_month_starts if data_type == 'm' else get_valid_weeks_for_song(song)
+                    for period in periods:
+                        file_key = (
+                            "monthly" if data_type == 'm' else "weekly",
+                            measure,
+                            group_by,
+                            song_id,
+                            period
+                        )
+                        if file_key in existing_parsed_files and not args.force:
+                            continue
+                            
+                        cmd = ["python", "parse-page-data.py",
+                               period,
+                               song_id,
+                               group_by,
+                               "monthly" if data_type == 'm' else "weekly",
+                               level,
+                               "--measures", measure,
+                               "--levels", level]
+                        if args.force:
+                            cmd.append("--force")
+                        
+                        if not run_command(cmd, f"Parsing {level} level data for {song['name']} - {period}"):
+                            parse_success = False
+                            print(f"⚠️  Continuing with next file...")
 
     if parse_success:
         print("\n✅ All steps completed successfully!")
