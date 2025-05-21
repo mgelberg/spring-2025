@@ -1,0 +1,2 @@
+# List GitHub issues in ascending order (oldest first) for the spring-2025 repository
+gh issue list --repo mgelberg/spring-2025 --search sort:created-asc 

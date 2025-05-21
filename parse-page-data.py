@@ -46,7 +46,7 @@ def parse_file(week, song_id, group_by, measure, period_type='weekly', level='so
     except FileNotFoundError:
         print(f"❌ Missing HTML source: {html_file}")
         return None
-
+    
     text = soup.get_text(separator="\n", strip=True)
     lines = text.split("\n")
 
@@ -67,8 +67,8 @@ def parse_file(week, song_id, group_by, measure, period_type='weekly', level='so
         i = start
         while i + 3 < len(lines):
             city = lines[i].strip()
-            prev = lines[i + 1].strip()
-            curr = lines[i + 2].strip()
+            prev = lines[i + 1].strip().replace(',', '')
+            curr = lines[i + 2].strip().replace(',', '')
             change = lines[i + 3].strip()
 
             if not prev.isdigit() or not curr.isdigit():
@@ -86,6 +86,7 @@ def parse_file(week, song_id, group_by, measure, period_type='weekly', level='so
                 "Level": level
             })
             i += 4
+
     df = pd.DataFrame(rows)
     os.makedirs(os.path.dirname(csv_file), exist_ok=True)
     df.to_csv(csv_file, index=False)
