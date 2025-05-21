@@ -77,10 +77,38 @@ def start_logged_in_browser(url):
     print("✅ Login confirmed, continuing with scraping...")
     return driver
 
-def scrape_file(driver, url, output_path):
+def get_scrape_log_message(
+    level: str, 
+    measure: str, 
+    period_type: str, 
+    period_value: str, 
+    song_name: str | None = None
+) -> str:
+    """Constructs a standardized log message for scraping progress."""
+    log_message = f"ℹ️ Scraping {period_type} {measure} for "
+    log_message += f"{song_name if song_name else 'Artist Level'} for period {period_value}"
+    return log_message
+
+def scrape_file(
+    driver, 
+    url: str, 
+    output_path: str, 
+    level: str, 
+    measure: str, 
+    period_type: str, 
+    period_value: str, 
+    song_name: str | None = None, 
+    log_urls: bool = False
+):
     """Scrape single file and save HTML"""
     try:
-        print(f"🌐 Requesting URL: {url}")
+        # Always print the descriptive log message
+        print(get_scrape_log_message(level, measure, period_type, period_value, song_name))
+
+        # Optionally, print the raw URL if log_urls is True
+        if log_urls:
+            print(f"   🔗 URL: {url}") # Using a different emoji for clarity, and ensuring it's indented
+
         driver.get(url)
         time.sleep(random.uniform(10, 19))
         

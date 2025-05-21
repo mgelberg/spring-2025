@@ -38,19 +38,28 @@ def main():
     
     # Scrape files
     start_time = time.time()
-    for i, (level, song, period_value, html_file, measure) in enumerate(pending_scrapes):
+    for i, (level, song_obj, period_value, html_file, measure) in enumerate(pending_scrapes):
         url = build_scrape_url(
             period_value,
-            song["id"] if level == "song" else None,
+            song_obj["id"] if song_obj else None,
             measure=measure,
-            period_type=args.period_type
+            period_type=args.period_type,
+            log_urls=args.log_urls
         )
         
-        if args.log_urls:
-            print(f"\n🔗 URL for {level} level scrape:")
-            print(f"   {url}")
-        
-        scrape_file(driver, url, html_file)
+        current_song_name = song_obj["name"] if song_obj else None
+
+        scrape_file(
+            driver,
+            url,
+            html_file,
+            level=level,
+            measure=measure,
+            period_type=args.period_type,
+            period_value=period_value,
+            song_name=current_song_name,
+            log_urls=args.log_urls
+        )
         print_progress(i, len(pending_scrapes), start_time)
     
     driver.quit()

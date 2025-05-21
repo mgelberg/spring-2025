@@ -22,6 +22,7 @@ import time
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--force", action="store_true", help="Force overwrite all outputs")
+    parser.add_argument("--log-urls", action="store_true", default=False, help="Log URLs being requested")
     return parser.parse_args()
 
 def get_user_choices():
@@ -95,6 +96,8 @@ def main():
     print(f"   Period: {'Monthly' if data_type == 'm' else 'Weekly'}")
     print(f"   Measures: {', '.join(measures)}")
     print(f"   Levels: {', '.join(levels)}")
+    if args.log_urls:
+        print(f"   Logging URLs: Enabled")
 
     # Print scraping plan
     print_scraping_plan(level_choice, data_type)
@@ -111,21 +114,35 @@ def main():
             first_scrape[2],
             first_scrape[1]["id"] if first_scrape[0] == "song" else None,
             measure=first_scrape[4],
-            period_type="monthly" if data_type == 'm' else "weekly"
+            period_type="monthly" if data_type == 'm' else "weekly",
+            log_urls=args.log_urls
         )
         driver = start_logged_in_browser(first_url)
         
         # Scrape files
         start_time = time.time()
-        for i, (level, song, period_value, html_file, measure) in enumerate(pending_scrapes):
+        for i, (level, song_obj, period_value, html_file, measure) in enumerate(pending_scrapes):
             url = build_scrape_url(
                 period_value,
-                song["id"] if level == "song" else None,
+                song_obj["id"] if song_obj else None,
                 measure=measure,
-                period_type="monthly" if data_type == 'm' else "weekly"
+                period_type="monthly" if data_type == 'm' else "weekly",
+                log_urls=args.log_urls
             )
             
-            scrape_file(driver, url, html_file)
+            current_song_name = song_obj["name"] if song_obj else None
+            
+            scrape_file(
+                driver, 
+                url, 
+                html_file, 
+                level=level,
+                measure=measure,
+                period_type="monthly" if data_type == 'm' else "weekly",
+                period_value=period_value,
+                song_name=current_song_name,
+                log_urls=args.log_urls
+            )
             print_progress(i, len(pending_scrapes), start_time)
         
         driver.quit()
