@@ -1,0 +1,1195 @@
+city,song,song_id,release_date,peak_date,peak_streams,peak_listeners,weeks_to_peak,is_still_growing,peaked_first_week
+Adelaide,Althea,1748029276,2024-06-21,2024-07-12,2,2,3.0,False,False
+Adelaide,That Thing,1807227251,2025-03-21,2025-04-25,1,1,5.0,False,False
+Allentown,Althea,1748029276,2024-06-21,2024-06-21,2,2,0.0,False,True
+Allentown,That Thing,1807227251,2025-03-21,2025-03-28,2,1,1.0,False,False
+Birmingham,Althea,1748029276,2024-06-21,2024-06-28,12,9,1.0,False,False
+Brasília,The Way That It Was,1711474242,2023-11-10,2024-09-27,1,1,46.0,False,False
+Brasília,Althea,1748029276,2024-06-21,2025-04-11,1,1,42.0,False,False
+Brasília,Breaking Me Down,1807227249,2025-04-25,2025-05-16,1,1,,True,False
+Charlotte,Althea,1748029276,2024-06-21,2024-07-05,18,15,2.0,False,False
+Charlotte,The Way That It Was,1711474242,2023-11-10,2024-09-13,1,1,44.0,False,False
+Charlotte,All In,1711474237,2023-11-10,2024-08-09,1,1,39.0,False,False
+Charlotte,That Thing,1807227251,2025-03-21,2025-03-28,6,5,1.0,False,False
+Charlotte,Slipping Away,1711474243,2023-11-10,2024-09-13,1,0,44.0,False,False
+Charlotte,Holding On,1711474240,2023-11-10,2024-04-12,1,1,22.0,False,False
+Cincinnati,Althea,1748029276,2024-06-21,2024-06-28,8,8,1.0,False,False
+Cincinnati,That Thing,1807227251,2025-03-21,2025-03-28,2,2,1.0,False,False
+Cincinnati,All In,1711474237,2023-11-10,2024-03-01,1,1,,True,False
+Dallas,Cycles,1711474233,2023-11-10,2023-11-10,2,1,0.0,False,True
+Dallas,That Thing,1807227251,2025-03-21,2025-03-21,6,5,0.0,False,True
+Dallas,Althea,1748029276,2024-06-21,2024-06-21,14,14,0.0,False,True
+Dallas,Holding On,1711474240,2023-11-10,2024-05-24,1,0,28.0,False,False
+Dallas,Crash,1711474239,2023-11-10,2024-04-05,1,1,21.0,False,False
+Dallas,All In,1711474237,2023-11-10,2024-01-19,1,1,10.0,False,False
+Dallas,The Way That It Was,1711474242,2023-11-10,2024-04-05,1,1,21.0,False,False
+Dallas,Slipping Away,1711474243,2023-11-10,2024-06-21,1,1,32.0,False,False
+Dallas,Kid,1711474235,2023-11-10,2024-04-05,1,1,21.0,False,False
+Gunnison,Holding On,1711474240,2023-11-10,2024-09-13,1,1,44.0,False,False
+Gunnison,Slipping Away,1711474243,2023-11-10,2023-11-10,3,1,0.0,False,True
+Gunnison,The Way That It Was,1711474242,2023-11-10,2024-09-20,2,1,45.0,False,False
+Gunnison,What Home Is,1711474234,2023-11-10,2023-11-10,2,1,0.0,False,True
+Gunnison,Cycles,1711474233,2023-11-10,2023-11-10,3,1,0.0,False,True
+Gunnison,Kid,1711474235,2023-11-10,2023-11-10,1,1,0.0,False,True
+Gunnison,All In,1711474237,2023-11-10,2024-01-19,1,1,10.0,False,False
+Gunnison,Crash,1711474239,2023-11-10,2023-11-10,2,2,0.0,False,True
+Gunnison,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Gunnison,Easy,1711474241,2023-11-10,2024-09-20,1,1,45.0,False,False
+Paris,Althea,1748029276,2024-06-21,2024-06-28,8,7,1.0,False,False
+Paris,Crash,1711474239,2023-11-10,2023-12-22,1,1,6.0,False,False
+Paris,Cycles,1711474233,2023-11-10,2023-12-22,2,1,6.0,False,False
+Paris,The Way That It Was,1711474242,2023-11-10,2024-04-05,1,1,21.0,False,False
+Paris,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Paris,All In,1711474237,2023-11-10,2023-12-22,3,1,6.0,False,False
+Paris,What Home Is,1711474234,2023-11-10,2023-12-22,1,1,6.0,False,False
+Paris,Breaking Me Down,1807227249,2025-04-25,2025-05-02,2,1,1.0,False,False
+Paris,Slipping Away,1711474243,2023-11-10,2023-12-22,1,1,6.0,False,False
+Paris,Holding On,1711474240,2023-11-10,2023-12-22,2,1,6.0,False,False
+Paris,Kid,1711474235,2023-11-10,2023-12-22,2,1,6.0,False,False
+Tokyo,Althea,1748029276,2024-06-21,2024-06-28,11,5,1.0,False,False
+Tokyo,That Thing,1807227251,2025-03-21,2025-04-18,9,6,4.0,False,False
+Tokyo,What Home Is,1711474234,2023-11-10,2023-11-24,4,4,2.0,False,False
+Tokyo,Cycles,1711474233,2023-11-10,2023-11-24,9,7,2.0,False,False
+Tokyo,Easy,1711474241,2023-11-10,2024-03-22,2,2,19.0,False,False
+Tokyo,The Way That It Was,1711474242,2023-11-10,2024-04-05,1,1,21.0,False,False
+Tokyo,Holding On,1711474240,2023-11-10,2023-11-24,4,4,2.0,False,False
+Tokyo,All In,1711474237,2023-11-10,2023-11-24,4,4,2.0,False,False
+Tokyo,Crash,1711474239,2023-11-10,2023-11-24,4,3,2.0,False,False
+Tokyo,Kid,1711474235,2023-11-10,2023-11-24,4,4,2.0,False,False
+Tokyo,Slipping Away,1711474243,2023-11-10,2023-12-01,1,1,3.0,False,False
+Toronto,Althea,1748029276,2024-06-21,2024-06-28,27,21,1.0,False,False
+Toronto,What Home Is,1711474234,2023-11-10,2023-11-17,1,1,1.0,False,False
+Toronto,That Thing,1807227251,2025-03-21,2025-05-16,6,4,,True,False
+Toronto,Cycles,1711474233,2023-11-10,2023-11-17,1,1,1.0,False,False
+Toronto,The Way That It Was,1711474242,2023-11-10,2023-11-17,2,1,1.0,False,False
+Toronto,Holding On,1711474240,2023-11-10,2023-11-17,2,1,1.0,False,False
+Toronto,Kid,1711474235,2023-11-10,2023-11-17,1,1,1.0,False,False
+Toronto,Crash,1711474239,2023-11-10,2023-11-17,2,1,1.0,False,False
+Toronto,All In,1711474237,2023-11-10,2023-11-17,2,1,1.0,False,False
+Toronto,Slipping Away,1711474243,2023-11-10,2023-11-17,2,1,1.0,False,False
+Toronto,Easy,1711474241,2023-11-10,2023-11-17,2,1,1.0,False,False
+Toronto,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Baltimore,Althea,1748029276,2024-06-21,2024-06-28,11,9,1.0,False,False
+Baltimore,That Thing,1807227251,2025-03-21,2025-03-21,3,3,0.0,False,True
+Baltimore,Cycles,1711474233,2023-11-10,2023-11-10,1,1,0.0,False,True
+Baltimore,Slipping Away,1711474243,2023-11-10,2024-03-29,1,1,20.0,False,False
+Baltimore,Breaking Me Down,1807227249,2025-04-25,2025-05-09,1,1,2.0,False,False
+Baltimore,Holding On,1711474240,2023-11-10,2024-02-02,1,1,12.0,False,False
+Baton Rouge,Althea,1748029276,2024-06-21,2024-06-28,2,2,1.0,False,False
+Baton Rouge,That Thing,1807227251,2025-03-21,2025-04-18,2,2,4.0,False,False
+Calgary,Althea,1748029276,2024-06-21,2024-06-28,11,8,1.0,False,False
+Calgary,That Thing,1807227251,2025-03-21,2025-04-25,2,2,5.0,False,False
+Calgary,Holding On,1711474240,2023-11-10,2024-03-15,1,1,18.0,False,False
+Chicago,Kid,1711474235,2023-11-10,2023-12-15,4,2,5.0,False,False
+Chicago,What Home Is,1711474234,2023-11-10,2023-12-15,4,2,5.0,False,False
+Chicago,Cycles,1711474233,2023-11-10,2023-12-15,5,2,5.0,False,False
+Chicago,That Thing,1807227251,2025-03-21,2025-04-11,9,9,3.0,False,False
+Chicago,Althea,1748029276,2024-06-21,2024-06-28,33,24,1.0,False,False
+Chicago,Slipping Away,1711474243,2023-11-10,2023-12-15,4,1,5.0,False,False
+Chicago,Crash,1711474239,2023-11-10,2023-12-15,3,2,5.0,False,False
+Chicago,The Way That It Was,1711474242,2023-11-10,2023-12-29,4,1,7.0,False,False
+Chicago,Holding On,1711474240,2023-11-10,2024-04-19,7,4,23.0,False,False
+Chicago,Easy,1711474241,2023-11-10,2023-12-15,4,1,5.0,False,False
+Chicago,All In,1711474237,2023-11-10,2023-12-15,4,2,5.0,False,False
+Chicago,Breaking Me Down,1807227249,2025-04-25,2025-05-09,1,1,2.0,False,False
+Denver,Holding On,1711474240,2023-11-10,2024-09-20,18,2,45.0,False,False
+Denver,Althea,1748029276,2024-06-21,2024-06-28,49,38,1.0,False,False
+Denver,Slipping Away,1711474243,2023-11-10,2024-09-20,17,2,45.0,False,False
+Denver,The Way That It Was,1711474242,2023-11-10,2024-09-20,17,2,45.0,False,False
+Denver,What Home Is,1711474234,2023-11-10,2024-09-20,19,2,45.0,False,False
+Denver,Cycles,1711474233,2023-11-10,2024-09-20,19,3,45.0,False,False
+Denver,That Thing,1807227251,2025-03-21,2025-03-21,20,15,0.0,False,True
+Denver,Kid,1711474235,2023-11-10,2024-09-20,19,3,45.0,False,False
+Denver,Crash,1711474239,2023-11-10,2024-09-20,19,2,45.0,False,False
+Denver,All In,1711474237,2023-11-10,2024-09-20,20,2,45.0,False,False
+Denver,Easy,1711474241,2023-11-10,2024-09-20,18,2,45.0,False,False
+Denver,Breaking Me Down,1807227249,2025-04-25,2025-04-25,2,1,0.0,False,True
+Detroit,Althea,1748029276,2024-06-21,2024-06-28,27,24,1.0,False,False
+Detroit,That Thing,1807227251,2025-03-21,2025-04-11,4,3,3.0,False,False
+Detroit,Cycles,1711474233,2023-11-10,2023-12-15,1,1,5.0,False,False
+Detroit,Breaking Me Down,1807227249,2025-04-25,2025-05-16,2,1,,True,False
+Houston,What Home Is,1711474234,2023-11-10,2023-11-10,1,0,0.0,False,True
+Houston,That Thing,1807227251,2025-03-21,2025-04-11,3,3,3.0,False,False
+Houston,Cycles,1711474233,2023-11-10,2023-11-10,1,1,0.0,False,True
+Houston,Kid,1711474235,2023-11-10,2023-11-10,1,1,0.0,False,True
+Houston,Althea,1748029276,2024-06-21,2024-06-21,9,8,0.0,False,True
+Houston,Slipping Away,1711474243,2023-11-10,2023-11-10,1,1,0.0,False,True
+Houston,Crash,1711474239,2023-11-10,2023-11-10,1,1,0.0,False,True
+Houston,Breaking Me Down,1807227249,2025-04-25,2025-05-09,1,1,2.0,False,False
+Houston,Holding On,1711474240,2023-11-10,2023-12-08,1,1,4.0,False,False
+Houston,All In,1711474237,2023-11-10,2023-11-10,1,1,0.0,False,True
+Kansas City,What Home Is,1711474234,2023-11-10,2024-03-08,1,1,17.0,False,False
+Kansas City,The Way That It Was,1711474242,2023-11-10,2023-12-22,1,1,6.0,False,False
+Kansas City,Althea,1748029276,2024-06-21,2024-06-28,11,10,1.0,False,False
+Kansas City,That Thing,1807227251,2025-03-21,2025-04-11,2,1,3.0,False,False
+Kansas City,Cycles,1711474233,2023-11-10,2023-11-24,2,1,2.0,False,False
+Montréal,The Way That It Was,1711474242,2023-11-10,2024-10-25,2,1,50.0,False,False
+Montréal,Althea,1748029276,2024-06-21,2024-07-05,5,5,2.0,False,False
+Montréal,Slipping Away,1711474243,2023-11-10,2024-10-25,2,1,50.0,False,False
+Montréal,Kid,1711474235,2023-11-10,2024-10-25,4,1,50.0,False,False
+Montréal,That Thing,1807227251,2025-03-21,2025-03-28,2,2,1.0,False,False
+Montréal,Cycles,1711474233,2023-11-10,2024-10-25,5,1,50.0,False,False
+Montréal,What Home Is,1711474234,2023-11-10,2024-10-25,4,1,50.0,False,False
+Montréal,Crash,1711474239,2023-11-10,2024-10-25,4,1,50.0,False,False
+Montréal,All In,1711474237,2023-11-10,2024-10-25,4,1,50.0,False,False
+Montréal,Easy,1711474241,2023-11-10,2024-10-25,3,1,50.0,False,False
+Montréal,Holding On,1711474240,2023-11-10,2024-10-25,4,1,50.0,False,False
+Nashville,What Home Is,1711474234,2023-11-10,2023-11-17,1,1,1.0,False,False
+Nashville,That Thing,1807227251,2025-03-21,2025-03-21,4,4,0.0,False,True
+Nashville,Cycles,1711474233,2023-11-10,2023-11-17,1,1,1.0,False,False
+Nashville,Holding On,1711474240,2023-11-10,2023-11-17,1,0,1.0,False,False
+Nashville,Kid,1711474235,2023-11-10,2023-11-17,1,1,1.0,False,False
+Nashville,All In,1711474237,2023-11-10,2023-11-17,1,1,1.0,False,False
+Nashville,Althea,1748029276,2024-06-21,2024-06-21,19,13,0.0,False,True
+Nashville,Breaking Me Down,1807227249,2025-04-25,2025-05-09,1,1,2.0,False,False
+Nashville,Crash,1711474239,2023-11-10,2023-11-17,1,1,1.0,False,False
+New York City,Holding On,1711474240,2023-11-10,2024-01-26,2,2,11.0,False,False
+New York City,The Way That It Was,1711474242,2023-11-10,2025-01-10,2,1,61.0,False,False
+New York City,Cycles,1711474233,2023-11-10,2024-08-02,4,2,38.0,False,False
+New York City,Slipping Away,1711474243,2023-11-10,2024-01-12,2,2,9.0,False,False
+New York City,Kid,1711474235,2023-11-10,2024-02-02,5,2,12.0,False,False
+New York City,What Home Is,1711474234,2023-11-10,2024-02-02,4,2,12.0,False,False
+New York City,Easy,1711474241,2023-11-10,2024-08-02,2,1,38.0,False,False
+New York City,Althea,1748029276,2024-06-21,2024-06-28,22,16,1.0,False,False
+New York City,That Thing,1807227251,2025-03-21,2025-03-28,9,8,1.0,False,False
+New York City,Crash,1711474239,2023-11-10,2024-02-02,3,2,12.0,False,False
+New York City,All In,1711474237,2023-11-10,2025-02-28,4,3,68.0,False,False
+New York City,Breaking Me Down,1807227249,2025-04-25,2025-04-25,3,3,0.0,False,True
+Philadelphia,Slipping Away,1711474243,2023-11-10,2024-09-20,2,1,45.0,False,False
+Philadelphia,The Way That It Was,1711474242,2023-11-10,2024-09-20,1,1,45.0,False,False
+Philadelphia,Kid,1711474235,2023-11-10,2024-09-20,1,1,45.0,False,False
+Philadelphia,That Thing,1807227251,2025-03-21,2025-03-21,3,3,0.0,False,True
+Philadelphia,Cycles,1711474233,2023-11-10,2024-10-11,2,1,48.0,False,False
+Philadelphia,Althea,1748029276,2024-06-21,2024-06-28,15,12,1.0,False,False
+Philadelphia,What Home Is,1711474234,2023-11-10,2024-09-20,1,1,45.0,False,False
+Philadelphia,Crash,1711474239,2023-11-10,2024-09-20,1,1,45.0,False,False
+Philadelphia,Holding On,1711474240,2023-11-10,2025-04-18,1,1,75.0,False,False
+Philadelphia,Easy,1711474241,2023-11-10,2025-04-18,1,1,75.0,False,False
+Philadelphia,All In,1711474237,2023-11-10,2025-04-18,1,1,75.0,False,False
+Portland,Althea,1748029276,2024-06-21,2024-06-21,30,19,0.0,False,True
+Portland,That Thing,1807227251,2025-03-21,2025-03-28,5,4,1.0,False,False
+Portland,Cycles,1711474233,2023-11-10,2025-01-17,2,1,62.0,False,False
+Portland,Holding On,1711474240,2023-11-10,2024-04-19,2,1,23.0,False,False
+Portland,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Salt Lake City,Althea,1748029276,2024-06-21,2024-06-28,20,16,1.0,False,False
+Salt Lake City,Crash,1711474239,2023-11-10,2025-04-11,1,1,74.0,False,False
+Salt Lake City,Cycles,1711474233,2023-11-10,2024-04-12,1,1,22.0,False,False
+Salt Lake City,All In,1711474237,2023-11-10,2024-10-18,2,1,49.0,False,False
+Salt Lake City,That Thing,1807227251,2025-03-21,2025-03-21,5,5,0.0,False,True
+Salt Lake City,What Home Is,1711474234,2023-11-10,2024-08-16,18,1,40.0,False,False
+Salt Lake City,Kid,1711474235,2023-11-10,2025-05-09,1,1,78.0,False,False
+Salt Lake City,Easy,1711474241,2023-11-10,2025-04-04,1,1,73.0,False,False
+San Diego,Althea,1748029276,2024-06-21,2024-06-28,5,5,1.0,False,False
+San Diego,That Thing,1807227251,2025-03-21,2025-03-21,2,2,0.0,False,True
+San Diego,Breaking Me Down,1807227249,2025-04-25,2025-05-09,1,1,2.0,False,False
+Seoul,Althea,1748029276,2024-06-21,2024-07-19,1,1,4.0,False,False
+Seoul,That Thing,1807227251,2025-03-21,2025-04-04,1,1,2.0,False,False
+Sydney,Althea,1748029276,2024-06-21,2024-07-05,4,4,2.0,False,False
+Sydney,That Thing,1807227251,2025-03-21,2025-03-28,3,3,1.0,False,False
+Sydney,Breaking Me Down,1807227249,2025-04-25,2025-05-16,1,1,,True,False
+Vancouver,That Thing,1807227251,2025-03-21,2025-03-21,6,5,0.0,False,True
+Vancouver,Cycles,1711474233,2023-11-10,2023-11-10,0,0,,True,False
+Vancouver,Althea,1748029276,2024-06-21,2024-06-28,16,13,1.0,False,False
+Vancouver,Holding On,1711474240,2023-11-10,2024-03-08,1,1,17.0,False,False
+West Chester,Althea,1748029276,2024-06-21,2024-07-12,4,1,3.0,False,False
+Albuquerque,Slipping Away,1711474243,2023-11-10,2023-11-10,3,1,0.0,False,True
+Albuquerque,What Home Is,1711474234,2023-11-10,2023-11-10,2,0,0.0,False,True
+Albuquerque,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Albuquerque,Cycles,1711474233,2023-11-10,2023-11-10,2,1,0.0,False,True
+Albuquerque,Kid,1711474235,2023-11-10,2023-11-10,2,1,0.0,False,True
+Albuquerque,The Way That It Was,1711474242,2023-11-10,2023-11-10,6,1,0.0,False,True
+Albuquerque,Althea,1748029276,2024-06-21,2024-06-28,6,4,1.0,False,False
+Albuquerque,All In,1711474237,2023-11-10,2023-11-10,1,1,0.0,False,True
+Albuquerque,Holding On,1711474240,2023-11-10,2023-11-10,2,1,0.0,False,True
+Albuquerque,Easy,1711474241,2023-11-10,2023-11-10,1,1,0.0,False,True
+Halifax,What Home Is,1711474234,2023-11-10,2024-05-03,1,1,25.0,False,False
+Halifax,Cycles,1711474233,2023-11-10,2024-01-12,1,1,9.0,False,False
+Halifax,Althea,1748029276,2024-06-21,2024-07-05,3,2,2.0,False,False
+Halifax,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Burlington,What Home Is,1711474234,2023-11-10,2023-11-10,1,1,0.0,False,True
+Burlington,That Thing,1807227251,2025-03-21,2025-03-21,2,2,0.0,False,True
+Burlington,Cycles,1711474233,2023-11-10,2023-11-10,1,0,0.0,False,True
+Burlington,Kid,1711474235,2023-11-10,2023-11-10,2,0,0.0,False,True
+Burlington,All In,1711474237,2023-11-10,2024-01-12,1,1,9.0,False,False
+Burlington,The Way That It Was,1711474242,2023-11-10,2024-01-05,1,1,8.0,False,False
+Burlington,Althea,1748029276,2024-06-21,2024-06-28,5,3,1.0,False,False
+Seattle,Althea,1748029276,2024-06-21,2024-06-28,33,25,1.0,False,False
+Seattle,That Thing,1807227251,2025-03-21,2025-03-21,9,7,0.0,False,True
+Seattle,Cycles,1711474233,2023-11-10,2024-03-08,2,1,17.0,False,False
+Seattle,Holding On,1711474240,2023-11-10,2024-12-06,2,1,56.0,False,False
+Seattle,Breaking Me Down,1807227249,2025-04-25,2025-05-02,2,2,1.0,False,False
+Seattle,What Home Is,1711474234,2023-11-10,2025-04-11,1,1,74.0,False,False
+Seattle,All In,1711474237,2023-11-10,2024-01-05,1,1,8.0,False,False
+São Paulo,Holding On,1711474240,2023-11-10,2024-09-13,2,1,44.0,False,False
+São Paulo,Althea,1748029276,2024-06-21,2024-07-05,3,2,2.0,False,False
+São Paulo,All In,1711474237,2023-11-10,2025-01-24,1,1,63.0,False,False
+São Paulo,Kid,1711474235,2023-11-10,2025-03-14,1,1,70.0,False,False
+São Paulo,What Home Is,1711474234,2023-11-10,2025-02-28,1,1,68.0,False,False
+São Paulo,Slipping Away,1711474243,2023-11-10,2024-07-05,1,1,34.0,False,False
+São Paulo,Easy,1711474241,2023-11-10,2024-09-06,1,1,43.0,False,False
+São Paulo,The Way That It Was,1711474242,2023-11-10,2025-02-07,1,1,65.0,False,False
+São Paulo,Cycles,1711474233,2023-11-10,2024-08-09,1,1,39.0,False,False
+São Paulo,Breaking Me Down,1807227249,2025-04-25,2025-05-16,1,0,,True,False
+"Washington, D.C.",That Thing,1807227251,2025-03-21,2025-03-21,3,2,0.0,False,True
+"Washington, D.C.",What Home Is,1711474234,2023-11-10,2024-03-01,1,1,16.0,False,False
+"Washington, D.C.",Cycles,1711474233,2023-11-10,2024-03-01,3,1,16.0,False,False
+"Washington, D.C.",The Way That It Was,1711474242,2023-11-10,2024-03-01,2,1,16.0,False,False
+"Washington, D.C.",Althea,1748029276,2024-06-21,2024-06-28,16,12,1.0,False,False
+"Washington, D.C.",Crash,1711474239,2023-11-10,2024-11-22,1,1,54.0,False,False
+"Washington, D.C.",Holding On,1711474240,2023-11-10,2024-11-22,1,1,54.0,False,False
+"Washington, D.C.",Easy,1711474241,2023-11-10,2024-11-22,1,1,54.0,False,False
+"Washington, D.C.",Slipping Away,1711474243,2023-11-10,2024-11-22,1,1,54.0,False,False
+"Washington, D.C.",All In,1711474237,2023-11-10,2024-03-01,1,0,,True,False
+Austin,Althea,1748029276,2024-06-21,2024-06-28,9,7,1.0,False,False
+Austin,That Thing,1807227251,2025-03-21,2025-03-21,3,3,0.0,False,True
+Austin,Cycles,1711474233,2023-11-10,2024-02-16,2,1,14.0,False,False
+Austin,Kid,1711474235,2023-11-10,2024-02-16,2,1,14.0,False,False
+Austin,Crash,1711474239,2023-11-10,2024-02-16,2,1,14.0,False,False
+Austin,All In,1711474237,2023-11-10,2024-02-16,1,1,14.0,False,False
+Austin,What Home Is,1711474234,2023-11-10,2024-02-16,2,1,14.0,False,False
+Austin,Easy,1711474241,2023-11-10,2024-02-16,1,1,14.0,False,False
+Austin,The Way That It Was,1711474242,2023-11-10,2024-02-16,1,1,14.0,False,False
+Austin,Slipping Away,1711474243,2023-11-10,2024-02-16,1,1,14.0,False,False
+Austin,Holding On,1711474240,2023-11-10,2024-02-16,1,1,14.0,False,False
+Hartford,What Home Is,1711474234,2023-11-10,2025-05-16,1,1,,True,False
+Hartford,That Thing,1807227251,2025-03-21,2025-04-11,5,3,3.0,False,False
+Hartford,Cycles,1711474233,2023-11-10,2023-11-17,1,1,1.0,False,False
+Hartford,Holding On,1711474240,2023-11-10,2024-08-30,1,1,42.0,False,False
+Hartford,The Way That It Was,1711474242,2023-11-10,2023-11-17,1,1,1.0,False,False
+Hartford,Althea,1748029276,2024-06-21,2024-06-28,9,7,1.0,False,False
+Hartford,Kid,1711474235,2023-11-10,2023-11-17,1,1,1.0,False,False
+Hartford,All In,1711474237,2023-11-10,2023-11-17,1,1,1.0,False,False
+Hartford,Crash,1711474239,2023-11-10,2024-11-08,1,1,52.0,False,False
+Hartford,Slipping Away,1711474243,2023-11-10,2023-11-17,1,1,1.0,False,False
+Hartford,Easy,1711474241,2023-11-10,2024-11-15,1,1,53.0,False,False
+North Myrtle Beach,Althea,1748029276,2024-06-21,2025-03-07,2,1,37.0,False,False
+North Myrtle Beach,Holding On,1711474240,2023-11-10,2025-01-03,1,1,60.0,False,False
+Spokane,Althea,1748029276,2024-06-21,2024-06-21,2,2,0.0,False,True
+Spokane,That Thing,1807227251,2025-03-21,2025-04-11,1,0,3.0,False,False
+Spokane,All In,1711474237,2023-11-10,2024-03-15,0,1,,True,False
+Atlanta,Althea,1748029276,2024-06-21,2024-06-28,32,25,1.0,False,False
+Atlanta,Cycles,1711474233,2023-11-10,2025-05-02,1,1,77.0,False,False
+Atlanta,That Thing,1807227251,2025-03-21,2025-03-28,14,10,1.0,False,False
+Atlanta,Crash,1711474239,2023-11-10,2024-11-22,1,1,54.0,False,False
+Atlanta,What Home Is,1711474234,2023-11-10,2025-04-04,1,1,73.0,False,False
+Atlanta,All In,1711474237,2023-11-10,2024-08-16,1,1,40.0,False,False
+Atlanta,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Atlanta,Kid,1711474235,2023-11-10,2024-08-16,1,1,40.0,False,False
+Johannesburg,Althea,1748029276,2024-06-21,2024-07-05,3,3,2.0,False,False
+Johannesburg,That Thing,1807227251,2025-03-21,2025-03-28,5,2,1.0,False,False
+Los Angeles,Althea,1748029276,2024-06-21,2024-06-21,18,15,0.0,False,True
+Los Angeles,That Thing,1807227251,2025-03-21,2025-03-28,7,6,1.0,False,False
+Los Angeles,Cycles,1711474233,2023-11-10,2024-10-18,3,1,49.0,False,False
+Los Angeles,Crash,1711474239,2023-11-10,2023-12-15,1,1,5.0,False,False
+Los Angeles,The Way That It Was,1711474242,2023-11-10,2023-12-15,1,1,5.0,False,False
+Los Angeles,All In,1711474237,2023-11-10,2025-02-07,1,1,65.0,False,False
+Los Angeles,What Home Is,1711474234,2023-11-10,2023-12-15,1,1,5.0,False,False
+Los Angeles,Easy,1711474241,2023-11-10,2023-12-15,1,1,5.0,False,False
+Los Angeles,Holding On,1711474240,2023-11-10,2023-12-15,4,2,5.0,False,False
+Los Angeles,Kid,1711474235,2023-11-10,2023-12-15,1,1,5.0,False,False
+Madrid,Slipping Away,1711474243,2023-11-10,2024-12-27,1,1,59.0,False,False
+Madrid,The Way That It Was,1711474242,2023-11-10,2025-02-28,1,1,68.0,False,False
+Madrid,Althea,1748029276,2024-06-21,2024-06-28,5,3,1.0,False,False
+Madrid,What Home Is,1711474234,2023-11-10,2025-02-07,1,1,65.0,False,False
+Madrid,Cycles,1711474233,2023-11-10,2025-02-07,1,1,65.0,False,False
+Madrid,Kid,1711474235,2023-11-10,2025-02-07,1,1,65.0,False,False
+Miami,That Thing,1807227251,2025-03-21,2025-05-09,2,1,7.0,False,False
+Miami,Cycles,1711474233,2023-11-10,2023-11-17,1,1,1.0,False,False
+Miami,Althea,1748029276,2024-06-21,2024-06-21,6,5,0.0,False,True
+Milwaukee,Cycles,1711474233,2023-11-10,2024-06-28,1,1,33.0,False,False
+Milwaukee,That Thing,1807227251,2025-03-21,2025-03-28,3,2,1.0,False,False
+Milwaukee,The Way That It Was,1711474242,2023-11-10,2024-06-28,1,0,33.0,False,False
+Milwaukee,Althea,1748029276,2024-06-21,2024-06-28,21,8,1.0,False,False
+Milwaukee,Slipping Away,1711474243,2023-11-10,2024-07-05,2,1,34.0,False,False
+Minneapolis,That Thing,1807227251,2025-03-21,2025-03-21,5,5,0.0,False,True
+Minneapolis,Althea,1748029276,2024-06-21,2024-10-04,18,12,15.0,False,False
+Norfolk,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Norfolk,Holding On,1711474240,2023-11-10,2024-08-23,1,1,41.0,False,False
+Norfolk,Althea,1748029276,2024-06-21,2024-06-28,2,2,1.0,False,False
+Oklahoma City,That Thing,1807227251,2025-03-21,2025-03-28,3,3,1.0,False,False
+Oklahoma City,Althea,1748029276,2024-06-21,2024-06-21,5,3,0.0,False,True
+Roanoke,Althea,1748029276,2024-06-21,2024-06-28,6,5,1.0,False,False
+Roanoke,That Thing,1807227251,2025-03-21,2025-03-28,4,4,1.0,False,False
+San Antonio,That Thing,1807227251,2025-03-21,2025-03-28,3,3,1.0,False,False
+San Antonio,Kid,1711474235,2023-11-10,2024-03-01,1,1,16.0,False,False
+San Antonio,Althea,1748029276,2024-06-21,2024-06-28,8,5,1.0,False,False
+San Antonio,Breaking Me Down,1807227249,2025-04-25,2025-05-09,2,1,2.0,False,False
+Sheboygan,Althea,1748029276,2024-06-21,2024-12-27,1,1,27.0,False,False
+The Dalles,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+The Dalles,Cycles,1711474233,2023-11-10,2025-01-17,1,1,62.0,False,False
+Brockton,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Brockton,Cycles,1711474233,2023-11-10,2025-01-17,1,1,62.0,False,False
+Brockton,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Louisville,Kid,1711474235,2023-11-10,2025-01-17,1,1,62.0,False,False
+Louisville,Cycles,1711474233,2023-11-10,2025-01-17,1,1,62.0,False,False
+Louisville,Althea,1748029276,2024-06-21,2024-06-28,4,3,1.0,False,False
+Louisville,Holding On,1711474240,2023-11-10,2024-04-12,2,0,22.0,False,False
+Berlin,Althea,1748029276,2024-06-21,2024-07-05,2,1,2.0,False,False
+Berlin,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Berlin,Crash,1711474239,2023-11-10,2023-12-15,4,1,5.0,False,False
+Berlin,All In,1711474237,2023-11-10,2023-12-08,1,1,4.0,False,False
+Berlin,What Home Is,1711474234,2023-11-10,2023-12-15,1,1,5.0,False,False
+Berlin,Easy,1711474241,2023-11-10,2023-12-15,1,1,5.0,False,False
+Berlin,Slipping Away,1711474243,2023-11-10,2023-12-08,1,1,4.0,False,False
+Berlin,Holding On,1711474240,2023-11-10,2023-12-08,4,1,4.0,False,False
+Berlin,Kid,1711474235,2023-11-10,2023-12-15,1,1,5.0,False,False
+Boston,Althea,1748029276,2024-06-21,2024-06-28,17,12,1.0,False,False
+Boston,What Home Is,1711474234,2023-11-10,2024-06-28,1,1,33.0,False,False
+Boston,Cycles,1711474233,2023-11-10,2025-01-10,2,1,61.0,False,False
+Boston,That Thing,1807227251,2025-03-21,2025-04-11,6,6,3.0,False,False
+Boston,Crash,1711474239,2023-11-10,2024-06-28,1,1,33.0,False,False
+Boston,The Way That It Was,1711474242,2023-11-10,2023-11-10,1,1,0.0,False,True
+Boston,Breaking Me Down,1807227249,2025-04-25,2025-05-02,2,2,1.0,False,False
+Boston,Easy,1711474241,2023-11-10,2023-11-10,1,1,0.0,False,True
+Des Moines,Althea,1748029276,2024-06-21,2024-06-28,2,2,1.0,False,False
+Des Moines,Cycles,1711474233,2023-11-10,2024-05-17,1,1,27.0,False,False
+Des Moines,That Thing,1807227251,2025-03-21,2025-04-11,2,2,3.0,False,False
+San Jose,Althea,1748029276,2024-06-21,2024-06-21,17,14,0.0,False,True
+San Jose,Holding On,1711474240,2023-11-10,2023-12-22,4,2,6.0,False,False
+San Jose,That Thing,1807227251,2025-03-21,2025-03-28,5,5,1.0,False,False
+San Jose,Cycles,1711474233,2023-11-10,2023-12-29,1,1,7.0,False,False
+San Jose,What Home Is,1711474234,2023-11-10,2023-12-29,1,1,7.0,False,False
+San Jose,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Santa Rosa,Althea,1748029276,2024-06-21,2024-09-06,1,1,11.0,False,False
+Santa Rosa,That Thing,1807227251,2025-03-21,2025-03-21,2,2,0.0,False,True
+Syracuse,Althea,1748029276,2024-06-21,2024-06-21,8,7,0.0,False,True
+Syracuse,That Thing,1807227251,2025-03-21,2025-03-28,2,2,1.0,False,False
+Syracuse,Crash,1711474239,2023-11-10,2024-02-09,1,1,13.0,False,False
+Syracuse,Holding On,1711474240,2023-11-10,2024-02-23,1,1,15.0,False,False
+Amsterdam,Althea,1748029276,2024-06-21,2024-06-28,3,3,1.0,False,False
+Amsterdam,That Thing,1807227251,2025-03-21,2025-04-04,2,1,2.0,False,False
+Glasgow,Althea,1748029276,2024-06-21,2024-12-06,2,1,24.0,False,False
+Glasgow,That Thing,1807227251,2025-03-21,2025-04-11,2,2,3.0,False,False
+Oakland,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Worcester,Althea,1748029276,2024-06-21,2024-06-28,6,6,1.0,False,False
+Worcester,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Worcester,Crash,1711474239,2023-11-10,2023-12-22,2,1,6.0,False,False
+Worcester,The Way That It Was,1711474242,2023-11-10,2023-12-22,2,1,6.0,False,False
+Worcester,All In,1711474237,2023-11-10,2023-12-22,2,1,6.0,False,False
+Worcester,What Home Is,1711474234,2023-11-10,2023-12-22,2,1,6.0,False,False
+Worcester,Easy,1711474241,2023-11-10,2023-12-22,1,1,6.0,False,False
+Worcester,Cycles,1711474233,2023-11-10,2023-12-22,2,1,6.0,False,False
+Worcester,Slipping Away,1711474243,2023-11-10,2023-12-22,1,1,6.0,False,False
+Worcester,Holding On,1711474240,2023-11-10,2023-12-22,2,1,6.0,False,False
+Worcester,Kid,1711474235,2023-11-10,2023-12-22,1,1,6.0,False,False
+London,What Home Is,1711474234,2023-11-10,2024-07-05,1,1,34.0,False,False
+London,Cycles,1711474233,2023-11-10,2024-07-05,1,1,34.0,False,False
+London,That Thing,1807227251,2025-03-21,2025-04-04,5,5,2.0,False,False
+London,Kid,1711474235,2023-11-10,2023-11-10,1,1,0.0,False,True
+London,Althea,1748029276,2024-06-21,2024-07-05,15,11,2.0,False,False
+London,The Way That It Was,1711474242,2023-11-10,2023-11-10,1,0,0.0,False,True
+London,Slipping Away,1711474243,2023-11-10,2023-11-10,1,0,0.0,False,True
+London,Crash,1711474239,2023-11-10,2023-11-10,1,1,0.0,False,True
+London,All In,1711474237,2023-11-10,2024-07-05,1,1,34.0,False,False
+London,Holding On,1711474240,2023-11-10,2023-11-10,1,1,0.0,False,True
+London,Easy,1711474241,2023-11-10,2023-11-10,1,0,0.0,False,True
+Indianapolis,That Thing,1807227251,2025-03-21,2025-03-28,3,3,1.0,False,False
+Indianapolis,Althea,1748029276,2024-06-21,2024-07-05,7,7,2.0,False,False
+Indianapolis,Cycles,1711474233,2023-11-10,2024-10-11,3,0,48.0,False,False
+Indianapolis,Holding On,1711474240,2023-11-10,2023-11-10,1,1,0.0,False,True
+Indianapolis,Easy,1711474241,2023-11-10,2023-11-10,1,1,0.0,False,True
+Pittsburgh,That Thing,1807227251,2025-03-21,2025-03-21,5,5,0.0,False,True
+Pittsburgh,Althea,1748029276,2024-06-21,2024-07-05,4,3,2.0,False,False
+Springfield,Althea,1748029276,2024-06-21,2024-06-28,2,2,1.0,False,False
+Springfield,Cycles,1711474233,2023-11-10,2024-06-21,1,1,32.0,False,False
+Springfield,That Thing,1807227251,2025-03-21,2025-05-02,1,1,6.0,False,False
+Springfield,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Bratislava,Cycles,1711474233,2023-11-10,2024-03-15,1,1,18.0,False,False
+Bratislava,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Helsinki,Althea,1748029276,2024-06-21,2024-06-21,3,3,0.0,False,True
+Helsinki,That Thing,1807227251,2025-03-21,2025-03-28,2,1,1.0,False,False
+Ithaca,Althea,1748029276,2024-06-21,2025-01-17,1,1,30.0,False,False
+Anaheim,Althea,1748029276,2024-06-21,2025-01-17,2,2,30.0,False,False
+Anaheim,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Anaheim,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Edmonton,That Thing,1807227251,2025-03-21,2025-03-21,2,2,0.0,False,True
+Edmonton,Althea,1748029276,2024-06-21,2024-07-05,6,5,2.0,False,False
+Osaka,Kid,1711474235,2023-11-10,2023-12-29,1,1,7.0,False,False
+Osaka,That Thing,1807227251,2025-03-21,2025-03-21,2,2,0.0,False,True
+Osaka,Althea,1748029276,2024-06-21,2024-07-19,5,5,4.0,False,False
+Osaka,All In,1711474237,2023-11-10,2023-12-22,1,1,6.0,False,False
+Osaka,What Home Is,1711474234,2023-11-10,2024-08-16,1,1,40.0,False,False
+Santiago,Crash,1711474239,2023-11-10,2024-08-23,1,1,41.0,False,False
+Santiago,The Way That It Was,1711474242,2023-11-10,2024-08-23,1,1,41.0,False,False
+Santiago,Slipping Away,1711474243,2023-11-10,2024-08-23,1,1,41.0,False,False
+Santiago,What Home Is,1711474234,2023-11-10,2024-08-23,1,1,41.0,False,False
+Santiago,Cycles,1711474233,2023-11-10,2024-08-23,1,1,41.0,False,False
+Santiago,Kid,1711474235,2023-11-10,2024-08-23,1,1,41.0,False,False
+Santiago,Althea,1748029276,2024-06-21,2024-08-23,1,1,9.0,False,False
+Santiago,Holding On,1711474240,2023-11-10,2024-08-23,1,1,41.0,False,False
+Santiago,Easy,1711474241,2023-11-10,2024-08-23,1,1,41.0,False,False
+Santiago,All In,1711474237,2023-11-10,2024-08-23,1,1,41.0,False,False
+Daytona Beach,What Home Is,1711474234,2023-11-10,2023-11-10,1,1,0.0,False,True
+Daytona Beach,Althea,1748029276,2024-06-21,2025-03-21,1,1,39.0,False,False
+Daytona Beach,Slipping Away,1711474243,2023-11-10,2023-11-10,1,1,0.0,False,True
+Daytona Beach,That Thing,1807227251,2025-03-21,2025-03-21,2,1,0.0,False,True
+Daytona Beach,Cycles,1711474233,2023-11-10,2023-11-10,1,1,0.0,False,True
+Daytona Beach,Kid,1711474235,2023-11-10,2023-11-10,1,1,0.0,False,True
+Daytona Beach,The Way That It Was,1711474242,2023-11-10,2025-03-21,2,1,71.0,False,False
+Daytona Beach,Easy,1711474241,2023-11-10,2025-03-21,1,1,71.0,False,False
+Daytona Beach,All In,1711474237,2023-11-10,2025-03-21,1,1,71.0,False,False
+Daytona Beach,Crash,1711474239,2023-11-10,2023-11-10,1,1,0.0,False,True
+Daytona Beach,Holding On,1711474240,2023-11-10,2023-11-10,1,1,0.0,False,True
+Lisbon,Slipping Away,1711474243,2023-11-10,2025-03-14,4,1,70.0,False,False
+Lisbon,That Thing,1807227251,2025-03-21,2025-03-21,2,2,0.0,False,True
+Lisbon,The Way That It Was,1711474242,2023-11-10,2025-03-14,3,1,70.0,False,False
+Lisbon,Kid,1711474235,2023-11-10,2025-03-14,3,1,70.0,False,False
+Lisbon,Cycles,1711474233,2023-11-10,2025-03-14,3,1,70.0,False,False
+Lisbon,What Home Is,1711474234,2023-11-10,2025-03-14,4,1,70.0,False,False
+Lisbon,Easy,1711474241,2023-11-10,2025-03-14,3,1,70.0,False,False
+Lisbon,All In,1711474237,2023-11-10,2025-03-14,3,1,70.0,False,False
+Lisbon,Crash,1711474239,2023-11-10,2025-03-14,3,1,70.0,False,False
+Lisbon,Althea,1748029276,2024-06-21,2024-06-28,1,1,1.0,False,False
+Lisbon,Holding On,1711474240,2023-11-10,2025-03-14,3,1,70.0,False,False
+St. Louis,What Home Is,1711474234,2023-11-10,2023-11-17,2,1,1.0,False,False
+St. Louis,That Thing,1807227251,2025-03-21,2025-03-21,3,3,0.0,False,True
+St. Louis,Cycles,1711474233,2023-11-10,2023-11-17,2,1,1.0,False,False
+St. Louis,Althea,1748029276,2024-06-21,2024-06-21,15,10,0.0,False,True
+St. Louis,The Way That It Was,1711474242,2023-11-10,2023-11-17,1,1,1.0,False,False
+St. Louis,Holding On,1711474240,2023-11-10,2023-11-24,1,1,2.0,False,False
+St. Louis,Kid,1711474235,2023-11-10,2023-11-17,1,1,1.0,False,False
+St. Louis,Crash,1711474239,2023-11-10,2023-11-17,1,1,1.0,False,False
+St. Louis,All In,1711474237,2023-11-10,2023-11-24,1,1,2.0,False,False
+St. Louis,Slipping Away,1711474243,2023-11-10,2023-11-17,1,1,1.0,False,False
+St. Louis,Easy,1711474241,2023-11-10,2023-11-17,1,1,1.0,False,False
+Orlando,Althea,1748029276,2024-06-21,2024-06-28,10,8,1.0,False,False
+Orlando,That Thing,1807227251,2025-03-21,2025-03-28,6,3,1.0,False,False
+Orlando,The Way That It Was,1711474242,2023-11-10,2023-11-17,1,1,1.0,False,False
+Orlando,Holding On,1711474240,2023-11-10,2023-11-17,2,1,1.0,False,False
+Orlando,Kid,1711474235,2023-11-10,2023-11-17,1,0,1.0,False,False
+Orlando,All In,1711474237,2023-11-10,2023-11-17,1,0,1.0,False,False
+Orlando,Slipping Away,1711474243,2023-11-10,2023-11-17,1,1,1.0,False,False
+Orlando,Easy,1711474241,2023-11-10,2023-11-17,1,1,1.0,False,False
+Orlando,Cycles,1711474233,2023-11-10,2025-01-31,1,1,64.0,False,False
+Orlando,Crash,1711474239,2023-11-10,2023-11-17,1,0,1.0,False,False
+Kingston Upon Hull,What Home Is,1711474234,2023-11-10,2023-11-10,2,0,0.0,False,True
+Kingston Upon Hull,Cycles,1711474233,2023-11-10,2023-11-10,2,0,0.0,False,True
+Kingston Upon Hull,Kid,1711474235,2023-11-10,2023-11-10,1,1,0.0,False,True
+Kingston Upon Hull,The Way That It Was,1711474242,2023-11-10,2023-11-10,1,1,0.0,False,True
+Kingston Upon Hull,Slipping Away,1711474243,2023-11-10,2023-11-10,3,1,0.0,False,True
+Kingston Upon Hull,Crash,1711474239,2023-11-10,2023-11-10,2,0,0.0,False,True
+Kingston Upon Hull,All In,1711474237,2023-11-10,2023-11-10,1,1,0.0,False,True
+Kingston Upon Hull,Holding On,1711474240,2023-11-10,2023-11-10,2,1,0.0,False,True
+Kingston Upon Hull,Easy,1711474241,2023-11-10,2023-11-10,2,1,0.0,False,True
+Las Vegas,What Home Is,1711474234,2023-11-10,2023-11-10,3,1,0.0,False,True
+Las Vegas,All In,1711474237,2023-11-10,2023-11-10,2,1,0.0,False,True
+Las Vegas,That Thing,1807227251,2025-03-21,2025-03-28,3,3,1.0,False,False
+Las Vegas,Cycles,1711474233,2023-11-10,2023-11-10,3,1,0.0,False,True
+Las Vegas,Kid,1711474235,2023-11-10,2023-11-10,4,1,0.0,False,True
+Las Vegas,Crash,1711474239,2023-11-10,2023-11-10,2,1,0.0,False,True
+Las Vegas,Althea,1748029276,2024-06-21,2024-06-28,9,5,1.0,False,False
+Las Vegas,Easy,1711474241,2023-11-10,2024-04-12,1,1,22.0,False,False
+Las Vegas,Holding On,1711474240,2023-11-10,2023-11-10,2,1,0.0,False,True
+Raleigh,What Home Is,1711474234,2023-11-10,2023-11-10,1,0,0.0,False,True
+Raleigh,Cycles,1711474233,2023-11-10,2023-11-10,1,1,0.0,False,True
+Raleigh,Kid,1711474235,2023-11-10,2023-11-10,1,1,0.0,False,True
+Raleigh,The Way That It Was,1711474242,2023-11-10,2023-11-10,1,1,0.0,False,True
+Raleigh,Slipping Away,1711474243,2023-11-10,2023-11-10,1,1,0.0,False,True
+Raleigh,Crash,1711474239,2023-11-10,2023-11-10,1,1,0.0,False,True
+Raleigh,That Thing,1807227251,2025-03-21,2025-03-28,3,3,1.0,False,False
+Raleigh,All In,1711474237,2023-11-10,2023-11-10,1,1,0.0,False,True
+Raleigh,Holding On,1711474240,2023-11-10,2023-11-10,1,1,0.0,False,True
+Raleigh,Easy,1711474241,2023-11-10,2023-11-10,1,1,0.0,False,True
+Raleigh,Althea,1748029276,2024-06-21,2024-07-05,2,2,,True,False
+Saint George's,What Home Is,1711474234,2023-11-10,2023-11-10,1,0,0.0,False,True
+Saint George's,Cycles,1711474233,2023-11-10,2023-11-10,1,1,0.0,False,True
+Saint George's,Kid,1711474235,2023-11-10,2023-11-10,1,1,0.0,False,True
+Saint George's,The Way That It Was,1711474242,2023-11-10,2023-11-10,1,1,0.0,False,True
+Saint George's,Slipping Away,1711474243,2023-11-10,2023-11-10,1,1,0.0,False,True
+Saint George's,Crash,1711474239,2023-11-10,2023-11-10,1,1,0.0,False,True
+Saint George's,All In,1711474237,2023-11-10,2023-11-10,1,1,0.0,False,True
+Saint George's,Holding On,1711474240,2023-11-10,2023-11-10,1,1,0.0,False,True
+Saint George's,Easy,1711474241,2023-11-10,2023-11-10,1,1,0.0,False,True
+South Bend,The Way That It Was,1711474242,2023-11-10,2023-11-10,1,1,0.0,False,True
+South Bend,Holding On,1711474240,2023-11-10,2023-11-10,2,0,0.0,False,True
+South Bend,Easy,1711474241,2023-11-10,2023-11-10,1,1,0.0,False,True
+Bend,Althea,1748029276,2024-06-21,2025-03-14,1,1,38.0,False,False
+Bend,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Fort Worth,Althea,1748029276,2024-06-21,2024-06-28,6,5,1.0,False,False
+Fort Worth,That Thing,1807227251,2025-03-21,2025-03-21,2,2,0.0,False,True
+Fort Worth,Easy,1711474241,2023-11-10,2023-12-01,1,1,3.0,False,False
+Fort Worth,Kid,1711474235,2023-11-10,2024-06-14,3,0,31.0,False,False
+Fort Worth,All In,1711474237,2023-11-10,2024-06-14,1,1,31.0,False,False
+Fort Worth,What Home Is,1711474234,2023-11-10,2024-06-14,2,0,31.0,False,False
+Milan,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Omaha,Althea,1748029276,2024-06-21,2024-06-21,7,5,0.0,False,True
+Omaha,Kid,1711474235,2023-11-10,2024-06-14,1,1,31.0,False,False
+Omaha,What Home Is,1711474234,2023-11-10,2024-06-14,2,1,31.0,False,False
+San Francisco,Althea,1748029276,2024-06-21,2024-06-21,6,4,0.0,False,True
+San Francisco,That Thing,1807227251,2025-03-21,2025-04-11,4,3,3.0,False,False
+Bridgeport,What Home Is,1711474234,2023-11-10,2024-06-07,1,1,30.0,False,False
+Bridgeport,Cycles,1711474233,2023-11-10,2025-03-07,2,1,69.0,False,False
+Bridgeport,The Way That It Was,1711474242,2023-11-10,2024-03-22,1,0,19.0,False,False
+Bridgeport,Slipping Away,1711474243,2023-11-10,2024-03-22,1,1,19.0,False,False
+Bridgeport,Crash,1711474239,2023-11-10,2024-03-22,2,0,19.0,False,False
+Bridgeport,Althea,1748029276,2024-06-21,2024-06-28,3,3,,True,False
+Madison,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Madison,Althea,1748029276,2024-06-21,2024-06-21,2,2,0.0,False,True
+Porto,What Home Is,1711474234,2023-11-10,2025-03-14,1,0,70.0,False,False
+Porto,All In,1711474237,2023-11-10,2025-03-14,1,0,70.0,False,False
+Haifa,Easy,1711474241,2023-11-10,2024-05-17,1,1,27.0,False,False
+Haifa,Slipping Away,1711474243,2023-11-10,2024-05-17,1,1,27.0,False,False
+Haifa,All In,1711474237,2023-11-10,2024-05-17,1,1,27.0,False,False
+Haifa,Kid,1711474235,2023-11-10,2024-05-17,1,1,27.0,False,False
+Haifa,Holding On,1711474240,2023-11-10,2024-05-17,1,1,27.0,False,False
+Haifa,The Way That It Was,1711474242,2023-11-10,2024-05-17,1,1,27.0,False,False
+Haifa,What Home Is,1711474234,2023-11-10,2024-05-17,1,1,27.0,False,False
+Haifa,Crash,1711474239,2023-11-10,2024-05-17,1,1,27.0,False,False
+Rochester,What Home Is,1711474234,2023-11-10,2023-11-10,1,1,0.0,False,True
+Rochester,Cycles,1711474233,2023-11-10,2023-11-17,1,1,1.0,False,False
+Rochester,That Thing,1807227251,2025-03-21,2025-03-28,6,4,1.0,False,False
+Rochester,Althea,1748029276,2024-06-21,2024-06-28,8,7,1.0,False,False
+Rochester,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Rochester,Holding On,1711474240,2023-11-10,2023-11-10,1,1,0.0,False,True
+Tacoma,That Thing,1807227251,2025-03-21,2025-04-04,3,3,2.0,False,False
+Tacoma,Althea,1748029276,2024-06-21,2024-06-21,5,3,0.0,False,True
+Asheville,That Thing,1807227251,2025-03-21,2025-03-28,3,2,1.0,False,False
+Asheville,Althea,1748029276,2024-06-21,2024-06-28,1,1,1.0,False,False
+Brisbane,Althea,1748029276,2024-06-21,2024-06-28,3,3,1.0,False,False
+Brisbane,That Thing,1807227251,2025-03-21,2025-03-28,2,2,1.0,False,False
+Cape Coral,Cycles,1711474233,2023-11-10,2024-03-22,1,0,19.0,False,False
+Cape Coral,The Way That It Was,1711474242,2023-11-10,2024-03-22,1,1,19.0,False,False
+Cape Coral,That Thing,1807227251,2025-03-21,2025-03-28,7,2,1.0,False,False
+Cape Coral,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Christchurch,That Thing,1807227251,2025-03-21,2025-03-28,2,2,1.0,False,False
+Christchurch,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Cleveland,That Thing,1807227251,2025-03-21,2025-03-28,3,2,1.0,False,False
+Cleveland,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Columbus,That Thing,1807227251,2025-03-21,2025-03-21,2,2,0.0,False,True
+Columbus,Althea,1748029276,2024-06-21,2024-06-21,5,5,0.0,False,True
+Kelowna,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Kelowna,That Thing,1807227251,2025-03-21,2025-03-28,2,2,1.0,False,False
+Lansing,That Thing,1807227251,2025-03-21,2025-03-28,2,2,1.0,False,False
+Lansing,Althea,1748029276,2024-06-21,2024-06-28,2,2,1.0,False,False
+Mesa,That Thing,1807227251,2025-03-21,2025-03-28,3,2,1.0,False,False
+Mesa,Althea,1748029276,2024-06-21,2024-06-28,2,2,1.0,False,False
+Sacramento,What Home Is,1711474234,2023-11-10,2023-11-17,2,1,1.0,False,False
+Sacramento,That Thing,1807227251,2025-03-21,2025-04-25,4,3,5.0,False,False
+Sacramento,Cycles,1711474233,2023-11-10,2023-11-17,2,1,1.0,False,False
+Sacramento,The Way That It Was,1711474242,2023-11-10,2023-11-17,1,1,1.0,False,False
+Sacramento,Holding On,1711474240,2023-11-10,2023-11-17,1,1,1.0,False,False
+Sacramento,All In,1711474237,2023-11-10,2023-11-17,1,1,1.0,False,False
+Sacramento,Althea,1748029276,2024-06-21,2024-06-28,14,11,1.0,False,False
+Sacramento,Slipping Away,1711474243,2023-11-10,2023-11-17,1,1,1.0,False,False
+Sacramento,Crash,1711474239,2023-11-10,2023-11-17,1,1,1.0,False,False
+Sacramento,Kid,1711474235,2023-11-10,2025-04-18,1,1,75.0,False,False
+Wichita,That Thing,1807227251,2025-03-21,2025-03-28,3,2,1.0,False,False
+Wichita,Althea,1748029276,2024-06-21,2024-06-21,3,3,0.0,False,True
+Wilmington,Althea,1748029276,2024-06-21,2024-06-28,10,6,1.0,False,False
+Wilmington,That Thing,1807227251,2025-03-21,2025-04-11,2,2,3.0,False,False
+Auckland,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Auckland,Althea,1748029276,2024-06-21,2024-06-28,3,2,1.0,False,False
+Bakersfield,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Barnstable,Althea,1748029276,2024-06-21,2024-07-05,3,2,2.0,False,False
+Barnstable,That Thing,1807227251,2025-03-21,2025-03-28,3,1,1.0,False,False
+Bayonne,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Bemidji,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Boise,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Boise,Althea,1748029276,2024-06-21,2024-06-28,5,5,1.0,False,False
+Bordeaux,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Boulder,Althea,1748029276,2024-06-21,2024-06-21,4,4,0.0,False,True
+Boulder,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Cape Town,That Thing,1807227251,2025-03-21,2025-04-11,2,2,3.0,False,False
+Cape Town,Althea,1748029276,2024-06-21,2024-06-21,2,2,0.0,False,True
+Charleroi,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Charleston,Crash,1711474239,2023-11-10,2024-11-08,1,1,52.0,False,False
+Charleston,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Charleston,Easy,1711474241,2023-11-10,2024-11-08,1,1,52.0,False,False
+Charleston,Holding On,1711474240,2023-11-10,2024-11-08,1,1,52.0,False,False
+Charleston,That Thing,1807227251,2025-03-21,2025-03-28,3,1,1.0,False,False
+Chowchilla,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Circleville,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Cookeville,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Crawfordsville,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Dublin,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Dublin,Althea,1748029276,2024-06-21,2024-08-16,1,1,8.0,False,False
+Edinburgh,Althea,1748029276,2024-06-21,2024-07-26,1,1,5.0,False,False
+Fort Wayne,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Frankfurt Am Main,Althea,1748029276,2024-06-21,2024-06-21,7,6,0.0,False,True
+Frankfurt Am Main,Cycles,1711474233,2023-11-10,2024-06-21,1,1,32.0,False,False
+Frankfurt Am Main,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Gastonia,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Gastonia,That Thing,1807227251,2025-03-21,2025-04-25,1,1,5.0,False,False
+Gordon,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Hendersonville,That Thing,1807227251,2025-03-21,2025-03-28,2,1,1.0,False,False
+Jacksonville,Althea,1748029276,2024-06-21,2024-06-21,14,5,0.0,False,True
+Jacksonville,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Jacksonville,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Joliette,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Kaohsiung,That Thing,1807227251,2025-03-21,2025-03-28,2,1,1.0,False,False
+Kaohsiung,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Knoxville,Althea,1748029276,2024-06-21,2024-06-28,2,2,1.0,False,False
+Knoxville,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Lake Butler,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Lausanne,That Thing,1807227251,2025-03-21,2025-03-21,2,1,0.0,False,True
+Lausanne,Althea,1748029276,2024-06-21,2024-08-16,3,2,8.0,False,False
+Leesburg,What Home Is,1711474234,2023-11-10,2023-11-10,1,0,0.0,False,True
+Leesburg,Cycles,1711474233,2023-11-10,2023-11-10,1,0,0.0,False,True
+Leesburg,Slipping Away,1711474243,2023-11-10,2023-11-10,1,0,0.0,False,True
+Leesburg,Crash,1711474239,2023-11-10,2023-11-10,1,0,0.0,False,True
+Leesburg,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Leesburg,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Leesburg,All In,1711474237,2023-11-10,2023-11-10,1,0,0.0,False,True
+Leuven,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Lexington-Fayette,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Lexington-Fayette,Althea,1748029276,2024-06-21,2024-06-28,2,1,,True,False
+Los Mochis,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Lubbock,That Thing,1807227251,2025-03-21,2025-03-21,2,1,0.0,False,True
+Lubbock,Althea,1748029276,2024-06-21,2024-07-05,3,3,2.0,False,False
+Melbourne,Althea,1748029276,2024-06-21,2024-07-05,4,4,2.0,False,False
+Melbourne,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Memphis,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Memphis,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Memphis,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Minato,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Montgomery,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Montgomery,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Newmarket,Althea,1748029276,2024-06-21,2024-06-28,1,1,1.0,False,False
+Newmarket,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Oak Harbor,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Oak Harbor,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Oldenburg,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Oldenburg,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Ottawa,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Ottawa,Crash,1711474239,2023-11-10,2023-12-15,1,1,5.0,False,False
+Ottawa,The Way That It Was,1711474242,2023-11-10,2023-12-15,1,1,5.0,False,False
+Ottawa,All In,1711474237,2023-11-10,2023-12-15,1,1,5.0,False,False
+Ottawa,Althea,1748029276,2024-06-21,2024-06-28,2,1,1.0,False,False
+Ottawa,What Home Is,1711474234,2023-11-10,2023-12-15,1,1,5.0,False,False
+Ottawa,Easy,1711474241,2023-11-10,2023-12-15,1,1,5.0,False,False
+Ottawa,Cycles,1711474233,2023-11-10,2023-12-15,1,1,5.0,False,False
+Ottawa,Holding On,1711474240,2023-11-10,2023-12-15,1,1,5.0,False,False
+Ottawa,Kid,1711474235,2023-11-10,2023-12-15,1,1,5.0,False,False
+Phoenix,That Thing,1807227251,2025-03-21,2025-04-11,2,2,3.0,False,False
+Phoenix,The Way That It Was,1711474242,2023-11-10,2025-04-25,1,1,76.0,False,False
+Phoenix,Althea,1748029276,2024-06-21,2024-06-28,9,7,1.0,False,False
+Phoenix,Slipping Away,1711474243,2023-11-10,2025-04-25,1,1,76.0,False,False
+Phoenix,Breaking Me Down,1807227249,2025-04-25,2025-04-25,1,1,0.0,False,True
+Phoenix,Holding On,1711474240,2023-11-10,2025-04-25,1,1,76.0,False,False
+Phoenix,Easy,1711474241,2023-11-10,2025-04-25,1,1,76.0,False,False
+Phoenix,What Home Is,1711474234,2023-11-10,2024-06-21,1,0,32.0,False,False
+Port Saint Lucie,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Poznań,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Poznań,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Québec,That Thing,1807227251,2025-03-21,2025-03-28,3,1,1.0,False,False
+Red Deer,Althea,1748029276,2024-06-21,2024-08-23,2,1,9.0,False,False
+Red Deer,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Richmond,Althea,1748029276,2024-06-21,2024-06-28,4,4,1.0,False,False
+Richmond,Cycles,1711474233,2023-11-10,2025-02-07,1,1,65.0,False,False
+Richmond,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Richmond,Holding On,1711474240,2023-11-10,2024-08-16,1,1,40.0,False,False
+San Luis Obispo,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+San Luis Obispo,Althea,1748029276,2024-06-21,2024-07-05,1,1,,True,False
+Sarasota,That Thing,1807227251,2025-03-21,2025-03-21,4,2,0.0,False,True
+Sheridan,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Stuttgart,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Stuttgart,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Taichung,Althea,1748029276,2024-06-21,2024-08-09,1,1,7.0,False,False
+Taichung,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Tampa,That Thing,1807227251,2025-03-21,2025-03-21,8,3,0.0,False,True
+Tampa,Althea,1748029276,2024-06-21,2024-07-05,9,5,2.0,False,False
+Thành Phố Uông Bí,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Tijuana,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Tijuana,Cycles,1711474233,2023-11-10,2024-11-15,1,1,53.0,False,False
+Timmins,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Uvalde,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Vienna,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Vienna,Althea,1748029276,2024-06-21,2024-06-21,2,2,0.0,False,True
+Winkler,Althea,1748029276,2024-06-21,2024-11-01,1,1,19.0,False,False
+Winkler,That Thing,1807227251,2025-03-21,2025-03-28,1,1,1.0,False,False
+Zürich,Cycles,1711474233,2023-11-10,2023-12-29,1,1,7.0,False,False
+Zürich,Althea,1748029276,2024-06-21,2024-07-05,3,1,2.0,False,False
+Zürich,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Akron,That Thing,1807227251,2025-03-21,2025-03-21,1,0,0.0,False,True
+Akron,Althea,1748029276,2024-06-21,2024-06-28,6,2,1.0,False,False
+Anchorage,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Anchorage,Althea,1748029276,2024-06-21,2024-06-28,4,4,1.0,False,False
+Ann Arbor,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Ann Arbor,Althea,1748029276,2024-06-21,2024-06-28,2,2,1.0,False,False
+Ashland,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Ashland,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Bay Harbor,That Thing,1807227251,2025-03-21,2025-03-21,1,0,0.0,False,True
+Bellingham,That Thing,1807227251,2025-03-21,2025-03-21,2,1,0.0,False,True
+Bellingham,Althea,1748029276,2024-06-21,2024-06-28,1,1,1.0,False,False
+Billings,Cycles,1711474233,2023-11-10,2024-06-28,1,1,33.0,False,False
+Billings,That Thing,1807227251,2025-03-21,2025-03-28,3,0,1.0,False,False
+Billings,Althea,1748029276,2024-06-21,2024-06-28,1,1,1.0,False,False
+Billings,The Way That It Was,1711474242,2023-11-10,2024-01-19,2,1,10.0,False,False
+Bogotá,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Buffalo,That Thing,1807227251,2025-03-21,2025-03-21,2,1,0.0,False,True
+Buffalo,Althea,1748029276,2024-06-21,2024-06-28,7,6,1.0,False,False
+Cadillac,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Canton,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Cardiff,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Cardiff,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Chon Buri,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Columbia,That Thing,1807227251,2025-03-21,2025-03-21,1,0,0.0,False,True
+Columbia,Althea,1748029276,2024-06-21,2024-07-05,2,1,2.0,False,False
+Dayton,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Dayton,Althea,1748029276,2024-06-21,2024-06-28,2,2,1.0,False,False
+Düsseldorf,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Düsseldorf,Althea,1748029276,2024-06-21,2024-06-28,2,1,1.0,False,False
+Eau Claire,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Eau Claire,Althea,1748029276,2024-06-21,2024-11-29,1,1,23.0,False,False
+Eugene,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Fremont,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Fremont,Althea,1748029276,2024-06-21,2024-06-28,2,1,1.0,False,False
+Fukuoka,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Glenwood Springs,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Havelock,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Helena,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Helena,Althea,1748029276,2024-06-21,2024-11-01,1,1,19.0,False,False
+Johnstown,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Johnstown,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Kalispell,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Kalispell,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Lancaster,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Lancaster,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Lincoln,That Thing,1807227251,2025-03-21,2025-03-21,2,1,0.0,False,True
+Lincoln,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Linz,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Linz,Althea,1748029276,2024-06-21,2024-11-08,1,1,20.0,False,False
+Little Rock,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Little Rock,That Thing,1807227251,2025-03-21,2025-03-28,1,0,1.0,False,False
+Lynchburg,That Thing,1807227251,2025-03-21,2025-03-28,1,0,1.0,False,False
+Monterrey,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Monterrey,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+New Orleans,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+New Orleans,What Home Is,1711474234,2023-11-10,2024-03-22,2,1,19.0,False,False
+New Orleans,Cycles,1711474233,2023-11-10,2024-03-22,2,1,19.0,False,False
+New Orleans,Althea,1748029276,2024-06-21,2024-06-28,13,10,1.0,False,False
+New Orleans,Slipping Away,1711474243,2023-11-10,2024-06-21,1,1,32.0,False,False
+New Orleans,Breaking Me Down,1807227249,2025-04-25,2025-05-09,1,1,2.0,False,False
+New Orleans,All In,1711474237,2023-11-10,2024-06-21,1,1,32.0,False,False
+New Orleans,Crash,1711474239,2023-11-10,2024-03-22,1,1,19.0,False,False
+Newport News,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Newport News,Althea,1748029276,2024-06-21,2024-08-23,1,1,9.0,False,False
+Ogden,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Ogden,Althea,1748029276,2024-06-21,2024-06-28,3,2,,True,False
+Olean,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Oshawa,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Penticton,That Thing,1807227251,2025-03-21,2025-03-21,2,2,0.0,False,True
+Portsmouth,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Prince George,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Redding,Althea,1748029276,2024-06-21,2025-03-21,1,1,39.0,False,False
+Redding,That Thing,1807227251,2025-03-21,2025-05-02,1,1,6.0,False,False
+Regina,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Regina,Althea,1748029276,2024-06-21,2024-11-08,1,1,20.0,False,False
+Rock Hill,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Rodez,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Rome,Althea,1748029276,2024-06-21,2025-03-21,1,1,39.0,False,False
+Sandpoint,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Sapporo,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Saskatoon,That Thing,1807227251,2025-03-21,2025-03-21,2,1,0.0,False,True
+Saskatoon,Althea,1748029276,2024-06-21,2024-11-08,1,1,20.0,False,False
+Star Valley Ranch,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Stonecrest,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Taipei,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Taipei,All In,1711474237,2023-11-10,2024-05-31,1,1,29.0,False,False
+Taipei,Althea,1748029276,2024-06-21,2024-06-28,4,3,1.0,False,False
+Tallinn,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Tallinn,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+The Woodlands,That Thing,1807227251,2025-03-21,2025-03-21,2,1,0.0,False,True
+The Woodlands,Breaking Me Down,1807227249,2025-04-25,2025-04-25,2,1,0.0,False,True
+The Woodlands,Althea,1748029276,2024-06-21,2024-07-05,1,1,,True,False
+Traverse City,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Tucson,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Tulsa,That Thing,1807227251,2025-03-21,2025-03-21,4,4,0.0,False,True
+Tulsa,Althea,1748029276,2024-06-21,2024-06-28,9,7,1.0,False,False
+Tulsa,Cycles,1711474233,2023-11-10,2024-11-08,1,1,52.0,False,False
+Victoria,That Thing,1807227251,2025-03-21,2025-03-21,3,3,0.0,False,True
+Watertown,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Waukesha,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Wausau,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Tel Aviv,What Home Is,1711474234,2023-11-10,2024-05-17,1,0,27.0,False,False
+Tel Aviv,Cycles,1711474233,2023-11-10,2024-05-17,1,1,27.0,False,False
+Tel Aviv,Althea,1748029276,2024-06-21,2024-06-21,2,2,0.0,False,True
+Tel Aviv,The Way That It Was,1711474242,2023-11-10,2025-04-04,1,1,73.0,False,False
+Tel Aviv,Slipping Away,1711474243,2023-11-10,2024-05-24,1,1,28.0,False,False
+Greenville,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Greenville,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Greenville,Cycles,1711474233,2023-11-10,2024-07-19,1,1,36.0,False,False
+Hong Kong,What Home Is,1711474234,2023-11-10,2023-11-10,1,0,0.0,False,True
+Hong Kong,Cycles,1711474233,2023-11-10,2023-11-10,1,1,0.0,False,True
+Hong Kong,Kid,1711474235,2023-11-10,2023-11-10,1,1,0.0,False,True
+Hong Kong,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Hong Kong,Althea,1748029276,2024-06-21,2024-06-28,2,2,,True,False
+Mexico City,What Home Is,1711474234,2023-11-10,2023-11-10,1,0,0.0,False,True
+Mexico City,Cycles,1711474233,2023-11-10,2023-11-10,1,1,0.0,False,True
+Mexico City,Kid,1711474235,2023-11-10,2023-11-10,1,1,0.0,False,True
+Mexico City,Althea,1748029276,2024-06-21,2024-07-05,3,3,2.0,False,False
+Mexico City,Crash,1711474239,2023-11-10,2023-11-10,1,1,0.0,False,True
+Mexico City,All In,1711474237,2023-11-10,2023-11-10,1,1,0.0,False,True
+Mexico City,Holding On,1711474240,2023-11-10,2023-11-10,1,1,0.0,False,True
+Venice,What Home Is,1711474234,2023-11-10,2023-11-10,1,0,0.0,False,True
+Venice,Cycles,1711474233,2023-11-10,2023-11-10,1,1,0.0,False,True
+Venice,Kid,1711474235,2023-11-10,2023-11-10,1,1,0.0,False,True
+Lake Jackson,Althea,1748029276,2024-06-21,2024-10-25,1,1,18.0,False,False
+Moncton,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Wenatchee,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Winston-Salem,That Thing,1807227251,2025-03-21,2025-03-21,1,1,0.0,False,True
+Durango,Cycles,1711474233,2023-11-10,2023-11-10,2,1,0.0,False,True
+Durango,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Fort Collins,Cycles,1711474233,2023-11-10,2023-11-10,1,1,0.0,False,True
+Fort Collins,Althea,1748029276,2024-06-21,2024-06-21,3,3,0.0,False,True
+Mumbai,What Home Is,1711474234,2023-11-10,2024-03-01,1,1,16.0,False,False
+Mumbai,That Thing,1807227251,2025-03-21,2025-04-11,2,2,3.0,False,False
+Elkhart,Holding On,1711474240,2023-11-10,2023-11-10,2,1,0.0,False,True
+Hammond,Althea,1748029276,2024-06-21,2024-06-28,1,1,1.0,False,False
+Hammond,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Hammond,Holding On,1711474240,2023-11-10,2023-11-10,1,1,0.0,False,True
+Lafayette,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Lafayette,Holding On,1711474240,2023-11-10,2023-11-10,1,1,0.0,False,True
+Stockton,Althea,1748029276,2024-06-21,2024-09-13,1,1,12.0,False,False
+Kyiv,Easy,1711474241,2023-11-10,2024-03-08,1,1,17.0,False,False
+Kyiv,Althea,1748029276,2024-06-21,2024-06-21,2,2,0.0,False,True
+Kyiv,That Thing,1807227251,2025-03-21,2025-04-11,2,1,3.0,False,False
+Jerusalem,The Way That It Was,1711474242,2023-11-10,2024-10-18,1,1,49.0,False,False
+Bangkok,Althea,1748029276,2024-06-21,2024-06-28,2,2,1.0,False,False
+Bangkok,That Thing,1807227251,2025-03-21,2025-05-02,1,1,6.0,False,False
+Honolulu,Althea,1748029276,2024-06-21,2024-06-28,4,3,1.0,False,False
+Marseille,Althea,1748029276,2024-06-21,2024-11-29,2,2,23.0,False,False
+Prague,Althea,1748029276,2024-06-21,2024-10-04,1,1,15.0,False,False
+Prague,That Thing,1807227251,2025-03-21,2025-04-25,1,1,5.0,False,False
+Cebu City,Holding On,1711474240,2023-11-10,2024-12-13,1,1,57.0,False,False
+Castle Rock,Crash,1711474239,2023-11-10,2023-12-08,1,1,4.0,False,False
+Castle Rock,What Home Is,1711474234,2023-11-10,2024-02-09,1,1,13.0,False,False
+Castle Rock,Althea,1748029276,2024-06-21,2025-01-24,1,1,31.0,False,False
+Castle Rock,Easy,1711474241,2023-11-10,2023-12-08,1,1,4.0,False,False
+Castle Rock,The Way That It Was,1711474242,2023-11-10,2023-12-08,1,1,4.0,False,False
+Castle Rock,All In,1711474237,2023-11-10,2023-12-08,1,1,4.0,False,False
+Castle Rock,Cycles,1711474233,2023-11-10,2023-12-08,1,1,4.0,False,False
+Castle Rock,Slipping Away,1711474243,2023-11-10,2023-12-08,1,1,4.0,False,False
+Castle Rock,Holding On,1711474240,2023-11-10,2023-12-08,1,1,4.0,False,False
+Castle Rock,Kid,1711474235,2023-11-10,2023-12-08,1,1,4.0,False,False
+Danbury,Cycles,1711474233,2023-11-10,2023-11-10,0,0,,True,False
+Danbury,What Home Is,1711474234,2023-11-10,2023-11-10,0,0,,True,False
+Chongqing,Althea,1748029276,2024-06-21,2024-12-13,1,1,25.0,False,False
+Wheeling,Althea,1748029276,2024-06-21,2024-12-13,1,1,25.0,False,False
+Montrose,Cycles,1711474233,2023-11-10,2025-02-28,1,1,68.0,False,False
+Montrose,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Montrose,Crash,1711474239,2023-11-10,2025-05-09,1,1,78.0,False,False
+Easton,Althea,1748029276,2024-06-21,2025-02-28,1,1,36.0,False,False
+Beijing,Althea,1748029276,2024-06-21,2024-07-12,12,11,3.0,False,False
+Shanghai,Althea,1748029276,2024-06-21,2024-07-12,7,5,3.0,False,False
+Guangzhou,Althea,1748029276,2024-06-21,2024-07-12,3,3,3.0,False,False
+Nanjing,Althea,1748029276,2024-06-21,2024-07-12,2,2,3.0,False,False
+New Haven,Althea,1748029276,2024-06-21,2024-07-19,2,2,4.0,False,False
+New Haven,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+San Juan,Althea,1748029276,2024-06-21,2024-07-12,2,2,3.0,False,False
+Warsaw,Althea,1748029276,2024-06-21,2024-07-12,2,2,3.0,False,False
+Warsaw,Breaking Me Down,1807227249,2025-04-25,2025-05-09,4,1,2.0,False,False
+Aberdeen,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Albany,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Athens,Althea,1748029276,2024-06-21,2024-07-05,2,1,2.0,False,False
+Auburn,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Bozeman,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Bridgewater,Althea,1748029276,2024-06-21,2024-06-28,6,2,1.0,False,False
+Bristol,Althea,1748029276,2024-06-21,2024-06-28,1,1,1.0,False,False
+Budapest,Althea,1748029276,2024-06-21,2024-06-21,3,3,0.0,False,True
+Busan,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Coos Bay,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Dale City,Althea,1748029276,2024-06-21,2024-06-28,1,1,1.0,False,False
+Edison,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Edison,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Elgin,Althea,1748029276,2024-06-21,2024-08-02,2,1,6.0,False,False
+Guadalajara,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Guayaquil,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Hamburg,Holding On,1711474240,2023-11-10,2024-03-15,1,1,18.0,False,False
+Hamburg,Althea,1748029276,2024-06-21,2024-06-21,3,3,0.0,False,True
+Hangzhou,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Hanoi,Althea,1748029276,2024-06-21,2024-11-08,2,1,20.0,False,False
+Hanoi,That Thing,1807227251,2025-03-21,2025-04-11,2,1,3.0,False,False
+Hawthorne,Althea,1748029276,2024-06-21,2024-06-28,5,3,1.0,False,False
+Istanbul,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Janesville,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Kuala Lumpur,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Lebanon,Althea,1748029276,2024-06-21,2024-06-28,2,1,1.0,False,False
+Lima,Althea,1748029276,2024-06-21,2024-07-26,3,1,5.0,False,False
+Manchester,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Manchester,That Thing,1807227251,2025-03-21,2025-04-11,3,1,3.0,False,False
+Mililani Town,Althea,1748029276,2024-06-21,2024-06-28,3,2,1.0,False,False
+Moscow,Althea,1748029276,2024-06-21,2024-08-02,1,1,6.0,False,False
+Muscatine,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Newbury,Althea,1748029276,2024-06-21,2024-06-28,1,1,1.0,False,False
+Olomouc,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Oslo,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Providence,Althea,1748029276,2024-06-21,2024-06-21,2,2,0.0,False,True
+Reno,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Riga,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Riyadh,Althea,1748029276,2024-06-21,2024-06-28,2,1,1.0,False,False
+Rockford,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Sofia,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Spartanburg,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Standish,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Toledo,Althea,1748029276,2024-06-21,2024-07-05,4,4,2.0,False,False
+Ystad,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Zagreb,Althea,1748029276,2024-06-21,2024-07-12,1,1,3.0,False,False
+Alexandria,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Anderson,Althea,1748029276,2024-06-21,2024-07-05,1,0,2.0,False,False
+Aspen,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Astoria,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Barcelona,Althea,1748029276,2024-06-21,2024-07-05,4,1,2.0,False,False
+Bay City,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Boone,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Brunswick,The Way That It Was,1711474242,2023-11-10,2023-12-22,1,0,6.0,False,False
+Brunswick,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Buenos Aires,Althea,1748029276,2024-06-21,2024-07-05,2,2,2.0,False,False
+Colombo,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Copenhagen,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Courtenay,Althea,1748029276,2024-06-21,2024-07-05,2,1,2.0,False,False
+Deyang,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+East Pensacola Heights,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+El Paso,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Evansville,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Fairmont,Althea,1748029276,2024-06-21,2024-07-12,1,0,3.0,False,False
+Fresno,Holding On,1711474240,2023-11-10,2024-05-24,1,0,28.0,False,False
+Fresno,Althea,1748029276,2024-06-21,2024-07-05,4,2,2.0,False,False
+Granby,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Greater Sudbury,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Hamilton,Althea,1748029276,2024-06-21,2024-07-05,2,1,2.0,False,False
+Hamilton,That Thing,1807227251,2025-03-21,2025-05-16,1,0,,True,False
+Harrisburg,Althea,1748029276,2024-06-21,2024-06-28,1,1,1.0,False,False
+Huntersville,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Jackson,That Thing,1807227251,2025-03-21,2025-04-11,2,1,3.0,False,False
+Jackson,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Jinan,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Kraków,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Kuwait City,Althea,1748029276,2024-06-21,2024-07-05,2,1,2.0,False,False
+Lewes,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Linhai,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Lyon,Breaking Me Down,1807227249,2025-04-25,2025-05-09,1,1,2.0,False,False
+Lyon,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Manistee,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Munich,Althea,1748029276,2024-06-21,2024-06-28,2,2,1.0,False,False
+Nagu,Althea,1748029276,2024-06-21,2024-07-05,1,1,2.0,False,False
+Topeka,Crash,1711474239,2023-11-10,2023-12-08,1,1,4.0,False,False
+Topeka,Althea,1748029276,2024-06-21,2024-07-26,2,1,5.0,False,False
+Topeka,Easy,1711474241,2023-11-10,2023-12-08,1,1,4.0,False,False
+Topeka,The Way That It Was,1711474242,2023-11-10,2023-12-08,1,1,4.0,False,False
+Topeka,All In,1711474237,2023-11-10,2023-12-08,1,1,4.0,False,False
+Topeka,What Home Is,1711474234,2023-11-10,2023-12-08,1,0,4.0,False,False
+Topeka,Cycles,1711474233,2023-11-10,2023-12-08,1,1,4.0,False,False
+Topeka,Slipping Away,1711474243,2023-11-10,2023-12-08,1,1,4.0,False,False
+Topeka,Holding On,1711474240,2023-11-10,2023-12-08,1,1,4.0,False,False
+Topeka,Kid,1711474235,2023-11-10,2023-12-08,1,1,4.0,False,False
+Málaga,Althea,1748029276,2024-06-21,2025-01-31,1,1,32.0,False,False
+Georgetown,Althea,1748029276,2024-06-21,2024-07-26,1,1,5.0,False,False
+Ames,Althea,1748029276,2024-06-21,2024-07-19,1,1,4.0,False,False
+Concord,Althea,1748029276,2024-06-21,2024-06-21,2,2,0.0,False,True
+Sturgis,Althea,1748029276,2024-06-21,2024-07-19,1,1,4.0,False,False
+Selma,That Thing,1807227251,2025-03-21,2025-05-09,1,1,7.0,False,False
+Bunbury,That Thing,1807227251,2025-03-21,2025-05-02,1,1,6.0,False,False
+Bunbury,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Nanaimo,That Thing,1807227251,2025-03-21,2025-04-25,1,1,5.0,False,False
+Victorville,Breaking Me Down,1807227249,2025-04-25,2025-04-25,1,1,0.0,False,True
+Victorville,That Thing,1807227251,2025-03-21,2025-04-25,1,1,5.0,False,False
+Waldorf,That Thing,1807227251,2025-03-21,2025-04-25,1,1,5.0,False,False
+Brussels,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Brussels,That Thing,1807227251,2025-03-21,2025-05-16,1,1,,True,False
+Winter Haven,Althea,1748029276,2024-06-21,2025-04-25,1,1,44.0,False,False
+Winnipeg,That Thing,1807227251,2025-03-21,2025-04-04,1,1,2.0,False,False
+Winnipeg,Althea,1748029276,2024-06-21,2024-07-05,7,5,,True,False
+Perth,Breaking Me Down,1807227249,2025-04-25,2025-05-02,1,1,1.0,False,False
+Perth,Althea,1748029276,2024-06-21,2024-06-28,2,2,1.0,False,False
+San José,Althea,1748029276,2024-06-21,2024-07-05,4,2,,True,False
+Singapore,Althea,1748029276,2024-06-21,2024-06-28,2,2,1.0,False,False
+Osage Beach,Althea,1748029276,2024-06-21,2024-07-05,1,1,,True,False
+Palembang,Althea,1748029276,2024-06-21,2024-07-05,1,1,,True,False
+Pottstown,Althea,1748029276,2024-06-21,2024-07-05,1,1,,True,False
+Riverside,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Riverside,Althea,1748029276,2024-06-21,2024-06-21,3,3,0.0,False,True
+Riverside,Cycles,1711474233,2023-11-10,2025-04-11,1,1,74.0,False,False
+Saint Joseph,Althea,1748029276,2024-06-21,2024-07-05,1,1,,True,False
+Shijiazhuang,Althea,1748029276,2024-06-21,2024-07-05,1,1,,True,False
+Sioux Falls,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Stamford,Cycles,1711474233,2023-11-10,2023-12-01,1,1,3.0,False,False
+Stamford,Kid,1711474235,2023-11-10,2023-12-01,1,1,3.0,False,False
+Stamford,Althea,1748029276,2024-06-21,2024-06-28,5,2,1.0,False,False
+Swindon,Althea,1748029276,2024-06-21,2024-07-05,1,1,,True,False
+Tembisa,Althea,1748029276,2024-06-21,2024-07-05,1,1,,True,False
+Trois-Rivières,Althea,1748029276,2024-06-21,2024-07-05,1,1,,True,False
+Urbana,Althea,1748029276,2024-06-21,2024-07-05,2,1,,True,False
+Waterford,Althea,1748029276,2024-06-21,2024-07-05,2,1,,True,False
+West Torrington,Althea,1748029276,2024-06-21,2024-07-05,1,1,,True,False
+Wuhan,Althea,1748029276,2024-06-21,2024-07-05,1,1,,True,False
+Allegan,Althea,1748029276,2024-06-21,2024-06-28,1,1,1.0,False,False
+Amery,Althea,1748029276,2024-06-21,2024-06-28,1,1,1.0,False,False
+Atlantic City,Althea,1748029276,2024-06-21,2024-06-28,1,1,1.0,False,False
+Bowie,Althea,1748029276,2024-06-21,2024-06-28,1,1,1.0,False,False
+Brandon,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Brattleboro,Althea,1748029276,2024-06-21,2024-06-28,2,2,,True,False
+Salvador,Althea,1748029276,2024-06-21,2025-05-16,1,1,,True,False
+Nagasaki,Althea,1748029276,2024-06-21,2025-05-16,1,0,,True,False
+Katowice,Slipping Away,1711474243,2023-11-10,2024-06-28,1,1,33.0,False,False
+Katowice,Cycles,1711474233,2023-11-10,2024-01-26,1,1,11.0,False,False
+Katowice,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Carmel,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Carmel,Breaking Me Down,1807227249,2025-04-25,2025-05-16,1,1,,True,False
+Cheonan,Breaking Me Down,1807227249,2025-04-25,2025-05-09,1,1,2.0,False,False
+Middletown,Breaking Me Down,1807227249,2025-04-25,2025-05-09,1,1,2.0,False,False
+Perm,Breaking Me Down,1807227249,2025-04-25,2025-05-09,1,1,2.0,False,False
+Saint Cloud,Althea,1748029276,2024-06-21,2025-02-07,1,1,33.0,False,False
+Belfast,That Thing,1807227251,2025-03-21,2025-04-04,1,1,2.0,False,False
+Luziânia,Althea,1748029276,2024-06-21,2025-02-21,1,1,35.0,False,False
+Morgantown,That Thing,1807227251,2025-03-21,2025-04-04,1,1,2.0,False,False
+Pécs,That Thing,1807227251,2025-03-21,2025-04-04,1,1,2.0,False,False
+Manila,The Way That It Was,1711474242,2023-11-10,2024-08-16,1,1,40.0,False,False
+Manila,Slipping Away,1711474243,2023-11-10,2024-08-16,1,1,40.0,False,False
+Manila,Althea,1748029276,2024-06-21,2024-08-16,1,1,8.0,False,False
+Benoni,That Thing,1807227251,2025-03-21,2025-04-18,5,1,4.0,False,False
+Biel/Bienne,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Bismarck,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Bismarck,Althea,1748029276,2024-06-21,2024-11-01,1,1,19.0,False,False
+Blacksburg,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Bologna,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Bonanza,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Fort Lauderdale,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Fort Lauderdale,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Johnson City,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Johnson City,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Lewiston,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Queensbury,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Quimper,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Rexburg,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Santa Fe,That Thing,1807227251,2025-03-21,2025-04-18,1,1,4.0,False,False
+Santa Fe,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Tauranga,That Thing,1807227251,2025-03-21,2025-04-18,1,0,4.0,False,False
+The Villages,That Thing,1807227251,2025-03-21,2025-04-18,2,0,4.0,False,False
+Netanya,Holding On,1711474240,2023-11-10,2024-06-14,1,1,31.0,False,False
+Durham,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Durham,Althea,1748029276,2024-06-21,2024-06-28,2,1,,True,False
+Elche,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Fort Madison,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Frederick,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Frederick,Althea,1748029276,2024-06-21,2024-11-22,1,1,22.0,False,False
+Heerenveen,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Leeds,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Leeds,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Loveland,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Malmö,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Marshalltown,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Missoula,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Missoula,Althea,1748029276,2024-06-21,2024-06-21,2,2,,True,False
+Newburgh,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Palma,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Provo,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Provo,Althea,1748029276,2024-06-21,2024-06-21,2,2,,True,False
+Rennes,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Sarnia,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Sherbrooke,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Thousand Oaks,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Thousand Oaks,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Toms River,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Toms River,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Wellington,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Ōita,That Thing,1807227251,2025-03-21,2025-04-11,1,1,3.0,False,False
+Cathedral City,Althea,1748029276,2024-06-21,2024-06-28,2,2,,True,False
+Saratoga Springs,Althea,1748029276,2024-06-21,2024-06-28,2,2,,True,False
+Staunton,Althea,1748029276,2024-06-21,2024-06-28,2,2,,True,False
+Winchester,Althea,1748029276,2024-06-21,2024-06-28,3,2,,True,False
+Yuba City,Althea,1748029276,2024-06-21,2024-06-28,2,2,,True,False
+Bucharest,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Cable,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Charlotte Amalie,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Chengdu,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Chesapeake Beach,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Cheyenne,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Clarksburg,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Corsicana,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Dubai,Cycles,1711474233,2023-11-10,2025-02-14,1,1,66.0,False,False
+Dubai,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Duluth,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Elkhorn,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Fayetteville,Althea,1748029276,2024-06-21,2024-06-21,2,1,0.0,False,True
+Fortuna,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Gillette,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Grand Rapids,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Great Falls,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Greeley,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Green Bay,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Harrisonburg,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Hickory,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Indiana,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Ioánnina,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Jefferson City,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Ljubljana,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Lockport,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Ludington,Althea,1748029276,2024-06-21,2024-06-28,2,1,,True,False
+Marquette,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Mitchell,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Morehead,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Nanning,Althea,1748029276,2024-06-21,2024-06-28,1,1,,True,False
+Fredericton,All In,1711474237,2023-11-10,2023-12-22,1,1,6.0,False,False
+South Kingstown,Althea,1748029276,2024-06-21,2024-06-28,2,0,,True,False
+St. Catharines,Althea,1748029276,2024-06-21,2024-06-28,2,0,,True,False
+Conway,Althea,1748029276,2024-06-21,2024-06-28,1,0,,True,False
+Hagerstown,Althea,1748029276,2024-06-21,2024-06-28,1,0,,True,False
+Ironville,Althea,1748029276,2024-06-21,2024-06-28,1,0,,True,False
+Kennewick,Althea,1748029276,2024-06-21,2024-06-21,1,1,0.0,False,True
+Dortmund,Althea,1748029276,2024-06-21,2024-06-21,2,1,,True,False
+Grand Forks,Althea,1748029276,2024-06-21,2024-06-21,2,1,,True,False
+Oxnard,Althea,1748029276,2024-06-21,2024-06-21,2,2,,True,False
+Samsun,Althea,1748029276,2024-06-21,2024-06-21,2,1,,True,False
+Waxahachie,Althea,1748029276,2024-06-21,2024-06-21,2,1,,True,False
+Bangor,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Battle Creek,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Beaumont,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Beaver Dam,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Bedford,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Bengaluru,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Binghamton,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Brentwood,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Butler,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Clarksville,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Dnipro,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Elmira,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Fort Smith,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Genève,Althea,1748029276,2024-06-21,2024-06-21,1,0,,True,False
+Gniezno,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Goochland,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Grinnell,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Hannover,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Hermosillo,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Hsinchu,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Kamloops,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Laramie,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Luxembourg,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Medford,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Milton Keynes,Althea,1748029276,2024-06-21,2024-06-21,1,0,,True,False
+New Richmond,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+North Adams,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Oak Island,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Parksville,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Pretoria,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Quezon City,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Rouses Point,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Rumford,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Saint George,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Saint Helena,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Santa Cruz,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Summerville,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Terrace,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Trenton,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Vernon,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Vilnius,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Virginia Beach,Althea,1748029276,2024-06-21,2024-06-21,1,1,,True,False
+Kingston,Slipping Away,1711474243,2023-11-10,2025-04-18,1,1,75.0,False,False
+Kingston,Cycles,1711474233,2023-11-10,2025-04-18,1,1,75.0,False,False
+Orangeville,Cycles,1711474233,2023-11-10,2023-12-15,1,1,5.0,False,False
+Baldwin,Althea,1748029276,2024-06-21,2024-08-09,1,1,7.0,False,False
+High Point,Althea,1748029276,2024-06-21,2024-08-09,1,1,7.0,False,False
+Revelstoke,Althea,1748029276,2024-06-21,2024-08-09,1,1,7.0,False,False
+Florence,Althea,1748029276,2024-06-21,2024-08-02,1,1,6.0,False,False
+Lincoln City,Althea,1748029276,2024-06-21,2024-08-02,1,1,6.0,False,False
+Lake Charles,Althea,1748029276,2024-06-21,2024-08-16,1,1,8.0,False,False
+Doncaster,Althea,1748029276,2024-06-21,2024-11-08,1,1,20.0,False,False
+Matane,Althea,1748029276,2024-06-21,2024-11-01,2,1,19.0,False,False
+Valencia,Althea,1748029276,2024-06-21,2024-11-08,1,1,20.0,False,False
+Durban,Althea,1748029276,2024-06-21,2024-11-01,1,1,19.0,False,False
+Fond Du Lac,Althea,1748029276,2024-06-21,2024-11-01,1,1,19.0,False,False
+Köln,Althea,1748029276,2024-06-21,2024-11-01,1,1,19.0,False,False
+Port Clinton,Althea,1748029276,2024-06-21,2024-11-01,2,1,19.0,False,False
+Stockholm,Althea,1748029276,2024-06-21,2024-11-01,1,1,19.0,False,False
+Yaroslavl,Althea,1748029276,2024-06-21,2024-11-01,2,1,19.0,False,False
+Saumur,The Way That It Was,1711474242,2023-11-10,2025-04-18,1,0,75.0,False,False
