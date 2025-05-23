@@ -1,0 +1,38 @@
+# Plotly Naming Conventions
+# ------------------------
+# In Plotly, there's a distinction between Python API parameters and JavaScript/JSON properties:
+#
+# Python API (snake_case):
+# - custom_data
+# - hover_name
+# - color_discrete_sequence
+#
+# JavaScript/JSON (camelCase):
+# - customdata
+# - hovername
+# - colorDiscreteSequence
+#
+# This is why in code you might see:
+# px.scatter(..., custom_data=['col1', 'col2'])  # Python parameter
+# hovertemplate="%{customdata[0]}"               # JavaScript property
+#
+# This pattern is common in web-focused Python libraries that bridge between
+# Python's naming conventions and JavaScript's conventions.
+
+# Plotly Dictionary Parameters
+# --------------------------
+# When you see dict() being passed to Plotly functions, it's because Plotly uses a nested
+# dictionary structure to represent its configuration. For example:
+#
+# fig.update_layout(
+#     margin=dict(t=100),        # t = top margin
+#     yaxis=dict(range=[0, 10])  # y-axis configuration
+# )
+#
+# This is because Plotly's configuration is hierarchical. The dict() allows you to:
+# 1. Group related settings together (like all margin settings)
+# 2. Create nested configurations (like axis settings within layout)
+# 3. Make the code more readable by clearly showing the hierarchy
+#
+# It's similar to how JSON structures data, which is why Plotly uses this pattern
+# (since it ultimately converts these Python dicts to JSON for the web visualization). 

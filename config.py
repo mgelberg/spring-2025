@@ -9,6 +9,15 @@ import os
 import argparse
 import glob
 import pandas as pd
+from file_utils import (
+    get_file_path,
+    get_file_key,
+    ensure_directory_exists,
+    PERIOD_TYPES,
+    MEASURES,
+    GROUP_BY_OPTIONS,
+    LEVELS
+)
 
 # Base config for trends page
 artist_id = "ami:identity:e6a35f7117e0ed7c0939675639157300"
@@ -23,9 +32,9 @@ def get_common_parser():
     """Get common argument parser for all scraping scripts"""
     parser = argparse.ArgumentParser()
     parser.add_argument("--force", action="store_true", help="Force re-download HTML files")
-    parser.add_argument("--measures", nargs="+", choices=["listeners", "plays"], required=True,
+    parser.add_argument("--measures", nargs="+", choices=MEASURES, required=True,
                        help="Which measures to scrape (listeners and/or plays)")
-    parser.add_argument("--levels", nargs="+", choices=["song", "artist"], required=True,
+    parser.add_argument("--levels", nargs="+", choices=LEVELS, required=True,
                        help="Which levels to scrape (song and/or artist)")
     return parser
 
@@ -33,10 +42,10 @@ def build_scrape_url(period_value, song_id=None, measure=None, period_type="week
     """Build URL for scraping with proper period format"""
     if measure is None:
         raise ValueError("Measure is required")
-    if period_type not in ["weekly", "monthly"]:
-        raise ValueError("period_type must be 'weekly' or 'monthly'")
-    if level not in ["song", "artist"]:
-        raise ValueError("level must be 'song' or 'artist'")
+    if period_type not in PERIOD_TYPES:
+        raise ValueError(f"period_type must be one of {PERIOD_TYPES}")
+    if level not in LEVELS:
+        raise ValueError(f"level must be one of {LEVELS}")
     
     period_prefix = "m" if period_type == "monthly" else "w"
     period_value_for_url = period_value[:6] if period_type == "monthly" else period_value
@@ -107,12 +116,12 @@ def scrape_file(
 
         # Optionally, print the raw URL if log_urls is True
         if log_urls:
-            print(f"   🔗 URL: {url}") # Using a different emoji for clarity, and ensuring it's indented
+            print(f"   🔗 URL: {url}")
 
         driver.get(url)
         time.sleep(random.uniform(10, 19))
         
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        ensure_directory_exists(output_path)
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(driver.page_source)
         print(f"✅ Saved HTML to {output_path}")
@@ -235,16 +244,6 @@ def get_song_id_for_level(level, song_id):
         return "artist"
     return song_id
 
-def get_file_path(period_type, measure, period_value, level, song_id, group_by):
-    """Generate the appropriate file path based on all parameters"""
-    return output_html_file_template.format(
-        period_type=period_type,
-        measure=measure,
-        group_by=group_by,
-        song_id=get_song_id_for_level(level, song_id),
-        week=period_value
-    )
-
 def build_pending_scrapes(measures, levels, data_type, force=False):
     """Build list of files that need to be scraped"""
     pending_scrapes = []
@@ -263,7 +262,7 @@ def build_pending_scrapes(measures, levels, data_type, force=False):
                         song_id="artist",
                         group_by=group_by
                     )
-                    if not os.path.exists(html_file) or force:
+                    if should_process_file(html_file, set(), force):
                         pending_scrapes.append((level, None, period, html_file, measure))
             else:
                 for song in songs_to_scrape:
@@ -278,28 +277,79 @@ def build_pending_scrapes(measures, levels, data_type, force=False):
                             song_id=song_id,
                             group_by=group_by
                         )
-                        if not os.path.exists(html_file) or force:
+                        if should_process_file(html_file, set(), force):
                             pending_scrapes.append((level, song, period, html_file, measure))
     return pending_scrapes
 
 def print_scraping_plan(level_choice, data_type):
     """Print the scraping plan based on selected options"""
     print("\n📋 Scraping Plan:")
+    
+    # Get existing files to check against
+    existing_files = get_existing_parsed_files()
+    
     if level_choice == 'a':
         periods = raw_month_starts if data_type == 'm' else raw_week_endings
-        print(f" Artist Level — {len(periods)} periods to scrape")
+        pending_periods = []
+        for period in periods:
+            file_key = get_file_key(
+                'monthly' if data_type == 'm' else 'weekly',
+                'plays',
+                'city',
+                'artist',
+                period
+            )
+            if file_key not in existing_files:
+                pending_periods.append(period)
+        print(f" Artist Level — {len(pending_periods)} periods to scrape")
     elif level_choice == 's':
         for song in songs_to_scrape:
             song_id = song["id"]
             periods = raw_month_starts if data_type == 'm' else get_valid_weeks_for_song(song)
-            print(f" {song['name']} — {len(periods)} periods to scrape")
+            pending_periods = []
+            for period in periods:
+                file_key = get_file_key(
+                    'monthly' if data_type == 'm' else 'weekly',
+                    'plays',
+                    'city',
+                    song_id,
+                    period
+                )
+                if file_key not in existing_files:
+                    pending_periods.append(period)
+            print(f" {song['name']} — {len(pending_periods)} periods to scrape")
     else:  # both
+        # Artist level
         periods = raw_month_starts if data_type == 'm' else raw_week_endings
-        print(f" Artist Level — {len(periods)} periods to scrape")
+        pending_periods = []
+        for period in periods:
+            file_key = get_file_key(
+                'monthly' if data_type == 'm' else 'weekly',
+                'plays',
+                'city',
+                'artist',
+                period
+            )
+            if file_key not in existing_files:
+                pending_periods.append(period)
+        print(f" Artist Level — {len(pending_periods)} periods to scrape")
+        
+        # Song level
         for song in songs_to_scrape:
             song_id = song["id"]
             periods = raw_month_starts if data_type == 'm' else get_valid_weeks_for_song(song)
-            print(f" {song['name']} — {len(periods)} periods to scrape")
+            pending_periods = []
+            for period in periods:
+                file_key = get_file_key(
+                    'monthly' if data_type == 'm' else 'weekly',
+                    'plays',
+                    'city',
+                    song_id,
+                    period
+                )
+                if file_key not in existing_files:
+                    pending_periods.append(period)
+            print(f" {song['name']} — {len(pending_periods)} periods to scrape")
 
 def get_existing_parsed_files():
     """Get a set of already parsed files"""
@@ -307,14 +357,17 @@ def get_existing_parsed_files():
     csv_pattern = "parsed csvs/parsed_*.csv"
     
     for csv_file in glob.glob(csv_pattern):
-        # Extract the key components from the filename
-        # Example: parsed_weekly_plays_by_city_1711474233_20250425.csv
-        parts = os.path.basename(csv_file).replace('.csv', '').split('_')
-        period_type = parts[1]
-        measure = parts[2]
-        group_by = parts[4]
-        song_id = parts[5]
-        week = parts[6]
-        parsed_files.add((period_type, measure, group_by, song_id, week))
+        try:
+            file_info = parse_filename(csv_file)
+            file_key = get_file_key(
+                file_info['period_type'],
+                file_info['measure'],
+                file_info['group_by'],
+                file_info['song_id'],
+                file_info['week']
+            )
+            parsed_files.add(file_key)
+        except ValueError:
+            continue
     
     return parsed_files

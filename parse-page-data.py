@@ -3,13 +3,15 @@ import re
 import pandas as pd
 from bs4 import BeautifulSoup
 from config import (
-    output_html_file_template,
     songs_to_scrape,
-    output_csv_file_template,
     get_common_parser,
-    get_song_id_for_level,
+    get_song_id_for_level
+)
+from file_utils import (
     get_file_path,
-    get_existing_parsed_files
+    get_csv_path,
+    get_file_key,
+    ensure_directory_exists
 )
 import argparse
 import os
@@ -28,12 +30,12 @@ def parse_file(week, song_id, group_by, measure, period_type='weekly', level='so
         group_by=group_by
     )
     
-    csv_file = output_csv_file_template.format(
-        week=week, 
+    csv_file = get_csv_path(
+        period_type=period_type,
+        measure=measure,
+        period_value=week,
         song_id=file_song_id,
-        group_by=group_by, 
-        measure=measure, 
-        period_type=period_type
+        group_by=group_by
     )
 
     # Only look up song name for song-level data
@@ -88,7 +90,7 @@ def parse_file(week, song_id, group_by, measure, period_type='weekly', level='so
             i += 4
 
     df = pd.DataFrame(rows)
-    os.makedirs(os.path.dirname(csv_file), exist_ok=True)
+    ensure_directory_exists(csv_file)
     df.to_csv(csv_file, index=False)
     print(f"✅ Parsed and saved: {csv_file}")
     return df
@@ -111,7 +113,13 @@ def main():
     
     # Check if this file has already been parsed
     existing_files = get_existing_parsed_files()
-    file_key = (args.period_type, args.measures[0], args.group_by, file_song_id, args.week)
+    file_key = get_file_key(
+        args.period_type,
+        args.measures[0],
+        args.group_by,
+        file_song_id,
+        args.week
+    )
     
     if file_key in existing_files and not args.force:
         print(f"🟡 Skipping (already parsed): {file_key}")

@@ -4,10 +4,32 @@ import seaborn as sns
 from typing import Dict
 from datetime import datetime
 import os
+import sys
+from file_utils import (
+    get_file_path,
+    get_csv_path,
+    ensure_directory_exists,
+    ANALYSIS_OUTPUT_DIR
+)
 
 def load_data():
     """Load the consolidated song velocity table."""
-    return pd.read_csv('data/song_velocity_table.csv')
+    try:
+        data_file = get_csv_path(
+            period_type='weekly',
+            measure='plays',
+            period_value='consolidated',
+            song_id='velocity_table',
+            group_by='city'
+        )
+        return pd.read_csv(data_file)
+    except FileNotFoundError:
+        print(f"❌ Error: Could not find data file at {data_file}")
+        print("Please ensure you have run the data consolidation script first.")
+        sys.exit(1)
+    except Exception as e:
+        print(f"❌ Error loading data: {str(e)}")
+        sys.exit(1)
 
 def analyze_adoption_patterns(df: pd.DataFrame) -> Dict[str, pd.DataFrame]:
     """
@@ -147,7 +169,7 @@ def analyze_adoption_patterns(df: pd.DataFrame) -> Dict[str, pd.DataFrame]:
         'category_metrics': category_metrics
     }
 
-def export_adoption_results(results: Dict[str, pd.DataFrame], output_dir='analysis_outputs'):
+def export_adoption_results(results: Dict[str, pd.DataFrame], output_dir=ANALYSIS_OUTPUT_DIR):
     """
     Export adoption analysis results to CSV files.
     
@@ -162,13 +184,16 @@ def export_adoption_results(results: Dict[str, pd.DataFrame], output_dir='analys
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     
     # Create directory if it doesn't exist
-    os.makedirs(output_dir, exist_ok=True)
+    ensure_directory_exists(output_dir)
     
     # Export each DataFrame
     for key, df in results.items():
-        filename = f'{output_dir}/adoption_{key}_{timestamp}.csv'
-        df.to_csv(filename, index=False)
-        print(f"\nExported {key} data to: {filename}")
+        try:
+            filename = f'{output_dir}/adoption_{key}_{timestamp}.csv'
+            df.to_csv(filename, index=False)
+            print(f"\n✅ Exported {key} data to: {filename}")
+        except Exception as e:
+            print(f"❌ Error exporting {key} data: {str(e)}")
 
 def display_adoption_results(results: Dict[str, pd.DataFrame]) -> None:
     """
