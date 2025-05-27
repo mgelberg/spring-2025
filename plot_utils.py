@@ -40,30 +40,83 @@ def plot_city_trends(df: pd.DataFrame,
     plt.tight_layout()
     plt.show()
 
-def calculate_streams_per_listener(df: pd.DataFrame) -> pd.DataFrame:
+def calculate_streams_per_listener(df: pd.DataFrame, level: str = 'song') -> pd.DataFrame:
     """
     Calculate streams per listener ratio for each city and week.
     
     Parameters:
     -----------
     df : pd.DataFrame
-        DataFrame containing streams and listener data
+        DataFrame containing streams and listener data from parsed_data_loader.py
+        Must have columns: city, week, song, measure, current_period, period_type
+    level : str, default 'song'
+        Level to calculate metrics for: 'song' or 'artist'
     
     Returns:
     --------
     pd.DataFrame
         DataFrame with streams per listener ratio
     """
-    # Pivot the data to get streams and listeners in separate columns
-    pivot_df = df.pivot_table(
-        index=['city', 'week'],
-        columns='measure',
+    if level not in ['song', 'artist']:
+        raise ValueError("level must be either 'song' or 'artist'")
+    
+    # Make a copy of the input DataFrame to avoid SettingWithCopyWarning
+    df = df.copy()
+    
+    # Filter for weekly data only
+    df = df[df['period_type'] == 'weekly']
+    
+    # Filter for the appropriate level
+    if level == 'artist':
+        df = df[df['level'] == 'artist']
+    else:
+        df = df[df['level'] == 'song']
+    
+    # Ensure measure column is lowercase
+    df.loc[:, 'measure'] = df['measure'].str.lower()
+    
+    # Create separate DataFrames for plays and listeners
+    plays_df = df[df['measure'] == 'plays'].copy()
+    listeners_df = df[df['measure'] == 'listeners'].copy()
+    
+    # Create pivot tables separately
+    plays_pivot = plays_df.pivot_table(
+        index=['city', 'week', 'song'] if level == 'song' else ['city', 'week'],
         values='current_period',
         aggfunc='sum'
     ).reset_index()
+    plays_pivot = plays_pivot.rename(columns={'current_period': 'plays'})
     
-    # Calculate streams per listener
-    pivot_df['streams_per_listener'] = pivot_df['plays'] / pivot_df['listeners']
+    # If we have no plays data, return empty DataFrame
+    if len(plays_pivot) == 0:
+        return pd.DataFrame()
+    
+    # Create listeners pivot table if we have listeners data
+    if len(listeners_df) > 0:
+        listeners_pivot = listeners_df.pivot_table(
+            index=['city', 'week', 'song'] if level == 'song' else ['city', 'week'],
+            values='current_period',
+            aggfunc='sum'
+        ).reset_index()
+        listeners_pivot = listeners_pivot.rename(columns={'current_period': 'listeners'})
+        
+        # Merge the pivot tables
+        pivot_df = pd.merge(
+            plays_pivot,
+            listeners_pivot,
+            on=['city', 'week', 'song'] if level == 'song' else ['city', 'week'],
+            how='left'
+        )
+    else:
+        # If no listeners data, use plays data and set listeners to 0
+        pivot_df = plays_pivot.copy()
+        pivot_df['listeners'] = 0
+    
+    # Fill NaN values with 0
+    pivot_df = pivot_df.fillna(0)
+    
+    # Calculate streams per listener for each week
+    pivot_df['streams_per_listener'] = pivot_df['plays'] / pivot_df['listeners'].replace(0, 1)  # Avoid division by zero
     
     return pivot_df
 
@@ -109,6 +162,7 @@ def complete_timeseries_data(df: pd.DataFrame,
 
 def plot_streams_per_listener_trends(df: pd.DataFrame,
                                    cities: List[str],
+                                   level: str = 'song',
                                    figsize: tuple = (12, 6)) -> None:
     """
     Plot streams per listener trends for selected cities.
@@ -119,25 +173,39 @@ def plot_streams_per_listener_trends(df: pd.DataFrame,
         DataFrame containing the trend data
     cities : List[str]
         List of cities to plot
+    level : str, default 'song'
+        Level to plot metrics for: 'song' or 'artist'
     figsize : tuple
         Figure size (width, height)
     """
     # Calculate streams per listener
-    ratio_df = calculate_streams_per_listener(df)
+    ratio_df = calculate_streams_per_listener(df, level)
     
     plt.figure(figsize=figsize)
     
-    for city in cities:
-        city_data = ratio_df[ratio_df['city'] == city]
-        plt.plot(city_data['week'], 
-                city_data['streams_per_listener'], 
-                label=city, 
-                marker='o')
+    if level == 'song':
+        # Plot each song separately
+        for city in cities:
+            city_data = ratio_df[ratio_df['city'] == city]
+            for song in city_data['song'].unique():
+                song_data = city_data[city_data['song'] == song]
+                plt.plot(song_data['week'], 
+                        song_data['streams_per_listener'], 
+                        label=f"{city} - {song}", 
+                        marker='o')
+    else:
+        # Plot artist level data
+        for city in cities:
+            city_data = ratio_df[ratio_df['city'] == city]
+            plt.plot(city_data['week'], 
+                    city_data['streams_per_listener'], 
+                    label=city, 
+                    marker='o')
     
-    plt.title('Streams per Listener Trends')
+    plt.title(f'Streams per Listener Trends ({level.title()} Level)')
     plt.xlabel('Week')
     plt.ylabel('Streams per Listener')
-    plt.legend()
+    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.grid(True, alpha=0.3)
     plt.xticks(rotation=45)
     plt.tight_layout()

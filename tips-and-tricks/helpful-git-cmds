@@ -1,2 +1,7 @@
 # List GitHub issues in ascending order (oldest first) for the spring-2025 repository
 gh issue list --repo mgelberg/spring-2025 --search sort:created-asc 
+
+# Start time tracking and link to issue when pushing commits
+# 1. Start the timer: gh issue comment <issue-number> --body "/spend 0h" 
+# 2. When done, update with total time: gh issue comment <issue-number> --body "/spend <hours>h"
+# Example: gh issue comment 123 --body "/spend 2h 30m" 

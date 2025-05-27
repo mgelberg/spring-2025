@@ -3,7 +3,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
-from plot_utils import plot_city_trends, complete_timeseries_data
+from plot_utils import (
+    plot_city_trends,
+    complete_timeseries_data,
+    calculate_streams_per_listener
+)
 from datetime import datetime
 from config import songs_to_scrape
 from file_utils import (
@@ -54,17 +58,10 @@ def calculate_city_metrics(streams_data, listeners_data):
         city_streams = streams_data[streams_data['city'] == city]
         city_listeners = listeners_data[listeners_data['city'] == city]
         
-        # Calculate weekly streams per listener for the city
-        weekly_metrics = []
-        for week in city_streams['week'].unique():
-            week_data = city_streams[city_streams['week'] == week]
-            week_streams = week_data['current_period'].sum()
-            week_listeners = city_listeners[city_listeners['week'] == week]['current_period'].max()
-            if week_listeners > 0:
-                ratio = week_streams / week_listeners
-                weekly_metrics.append(ratio)
-        
-        avg_weekly_streams_per_listener = sum(weekly_metrics) / len(weekly_metrics) if weekly_metrics else 0
+        # Calculate weekly streams per listener for the city using the standardized function
+        city_data = pd.concat([city_streams, city_listeners])
+        ratio_df = calculate_streams_per_listener(city_data, level='song')
+        avg_weekly_streams_per_listener = ratio_df['streams_per_listener'].mean() if not ratio_df.empty else 0
         
         # Calculate metrics for each song
         time_to_peak_list = []
@@ -250,40 +247,34 @@ def prepare_weekly_song_data(df, include_artist_level=False):
     # Ensure all column names are lowercase
     df.columns = df.columns.str.lower()
     
+    # Ensure measure values are lowercase
+    df['measure'] = df['measure'].str.lower()
+    
     # Filter for weekly data only
-    df = df[df['period_type'].str.lower() == 'weekly'].copy()
+    weekly_mask = df['period_type'].str.lower() == 'weekly'
+    df = df[weekly_mask].copy()
     
-    # Base filter for song-level data
-    song_filter = (
-        (df['city'].str.lower() != 'all cities')
-    )
+    # Convert week to datetime
+    df['week'] = pd.to_datetime(df['week'].astype(str), format='%Y%m%d')
     
-    # Add artist level filter if needed
-    if not include_artist_level:
-        song_filter = song_filter & (~df['song'].str.lower().str.contains('artist level', case=False, na=False))
+    # Base filter for song-level data only (no artist level)
+    song_filter = (df['level'].str.lower() == 'song')
     
     # Get streams data
-    streams_data = df[
-        (df['measure'].str.lower() == 'plays') & 
-        song_filter
-    ].copy()
+    streams_mask = (df['measure'] == 'plays') & song_filter
+    streams_data = df[streams_mask].copy()
     
-    # Get listeners data
-    listeners_data = df[
-        (df['measure'].str.lower() == 'listeners') & 
-        song_filter
-    ].copy()
-    
-    # Convert week columns to datetime
-    streams_data['week'] = pd.to_datetime(streams_data['week'], format='%Y%m%d')
-    listeners_data['week'] = pd.to_datetime(listeners_data['week'], format='%Y%m%d')
+    # Get listeners data - ensure we're using song-level data only
+    listeners_mask = (df['measure'] == 'listeners') & song_filter
+    listeners_data = df[listeners_mask].copy()
     
     return streams_data, listeners_data
 
-def analyze_peaks(df=None, include_artist_level=False):
+def analyze_peaks_by_city(df=None, include_artist_level=False):
     """
-    Analyze and visualize peak and adoption metrics for cities.
+    Analyze and visualize peak and adoption metrics for individual cities.
     Only considers the first 12 weeks after release for each song.
+    Excludes 'All Cities' aggregate data to focus on city-specific patterns.
     
     Parameters:
     -----------
@@ -297,7 +288,7 @@ def analyze_peaks(df=None, include_artist_level=False):
     tuple
         (city_metrics, song_metrics, category_metrics) where:
         - city_metrics: DataFrame with aggregated city-level metrics
-        - song_metrics: DataFrame with individual song-level metrics
+        - song_metrics: DataFrame with individual song-level metrics per city
         - category_metrics: DataFrame with category-level summary statistics
     """
     # Check if we already have a DataFrame in the notebook context
@@ -305,17 +296,18 @@ def analyze_peaks(df=None, include_artist_level=False):
         try:
             import __main__
             if hasattr(__main__, 'df') and isinstance(__main__.df, pd.DataFrame):
-                print("ℹ️ Using existing DataFrame from notebook context")
                 df = __main__.df
             else:
-                print("ℹ️ Loading data from file...")
                 df = load_and_prepare_data()
-        except Exception:
-            print("ℹ️ Loading data from file...")
+        except Exception as e:
             df = load_and_prepare_data()
     
     # Prepare data for analysis
     streams_data, listeners_data = prepare_weekly_song_data(df, include_artist_level)
+    
+    # Filter out 'All Cities' data for city-specific analysis
+    streams_data = streams_data[streams_data['city'].str.lower() != 'all cities'].copy()
+    listeners_data = listeners_data[listeners_data['city'].str.lower() != 'all cities'].copy()
     
     # Calculate city metrics
     city_metrics, song_metrics = calculate_city_metrics(streams_data, listeners_data)
@@ -332,31 +324,25 @@ def analyze_peaks(df=None, include_artist_level=False):
     category_metrics.columns = ['num_cities', 'avg_streams', 'avg_consistency', 'avg_weeks_to_adopt']
     category_metrics = category_metrics.reset_index()
     
-    # Print the results
-    print("\nCity Metrics Summary (First 12 Weeks After Release):")
+    # Print summary of metrics and their definitions
+    print("\nCity Performance Summary (First 12 Weeks After Release):")
     print("=" * 80)
-    print(city_metrics.to_string(index=False))
-    
-    # Print interpretation of metrics
-    print("\nInterpretation Notes:")
-    print("- All metrics are calculated using only the first 12 weeks after release for each song")
+    print("\nKey Metrics:")
+    print("- avg_weeks_to_peak: Average number of weeks until peak streaming activity")
     print("- peak_streams: Highest number of streams in a single week")
-    print("- total_streams: Total streams in first 12 weeks")
-    print("- peak_listeners: Highest number of listeners in any single week")
-    print("- active_cities: Number of cities that have streamed the song")
-    print("- avg_streams_per_city: Average streams per active city")
-    print("- avg_streams_per_listener: Average streams per peak weekly listener")
-    print("- peak_to_total_ratio: Percentage of total streams that occurred at peak")
-    print("- retention_rate: Percentage of cities that streamed in last 4 weeks")
-    print("- adoption_category: Song's adoption pattern (Quick Adopter, Mid Adopter, Slow Adopter)")
-    
-    print("\nAvailable DataFrames for Further Analysis:")
-    print("- city_metrics: City-level aggregated metrics including adoption patterns and peak behavior")
-    print("  • Contains: city name, adoption category, consistency scores, peak metrics, and engagement stats")
-    print("- song_metrics: Song-level metrics for each city-song combination")
-    print("  • Contains: individual song performance, adoption timing, and peak behavior for each city")
-    print("- category_metrics: Summary statistics for each adoption category")
-    print("  • Contains: average streams, number of cities, and other aggregated metrics by category")
+    print("- peak_weekly_listeners: Highest number of listeners in any single week")
+    print("- songs_analyzed: Number of songs analyzed for this city")
+    print("- songs_peaked_first_week: Number of songs that peaked in their first week")
+    print("- pct_peaked_first_week: Percentage of songs that peaked in their first week")
+    print("- songs_still_growing: Number of songs still growing after 12 weeks")
+    print("- total_streams: Total streams across all songs")
+    print("- consistency_score: Percentage of songs that were streamed in last 4 weeks")
+    print("- avg_weekly_streams_per_listener: Average of (streams/listeners) for each week")
+    print("- avg_weeks_to_adopt: Average number of weeks until first streaming activity")
+    print("\nCity Categories:")
+    print("- Early Adopter: Cities that start streaming within the first 33rd percentile of weeks")
+    print("- Mid Adopter: Cities that start streaming between 33rd and 67th percentile of weeks")
+    print("- Late Bloomer: Cities that start streaming after the 67th percentile of weeks")
     
     # Create interactive visualizations using Plotly
     # 1. Adoption Speed vs Consistency Plot
@@ -445,13 +431,13 @@ def analyze_peaks(df=None, include_artist_level=False):
     # Show the plot
     fig2.show()
     
-    # Return the DataFrames without displaying them
     return city_metrics.copy(), song_metrics.copy(), category_metrics.copy()
 
-def analyze_song_adoption(df=None, include_artist_level=False):
+def analyze_song_adoption_overall(df=None, include_artist_level=False):
     """
-    Analyze and visualize adoption patterns across all songs.
+    Analyze and visualize overall song adoption patterns across all cities.
     Only considers the first 12 weeks after release for each song.
+    Uses 'All Cities' aggregate data to understand overall song performance.
     
     Parameters:
     -----------
@@ -463,87 +449,135 @@ def analyze_song_adoption(df=None, include_artist_level=False):
     Returns:
     --------
     pd.DataFrame
-        song_adoption_metrics: DataFrame with song-level adoption metrics
+        DataFrame with song-level adoption metrics
     """
     # Check if we already have a DataFrame in the notebook context
     if df is None:
         try:
             import __main__
             if hasattr(__main__, 'df') and isinstance(__main__.df, pd.DataFrame):
-                print("ℹ️ Using existing DataFrame from notebook context")
                 df = __main__.df
             else:
-                print("ℹ️ Loading data from file...")
                 df = load_and_prepare_data()
-        except Exception:
-            print("ℹ️ Loading data from file...")
+        except Exception as e:
             df = load_and_prepare_data()
+    
+    if df is None or df.empty:
+        return pd.DataFrame()
     
     # Prepare data for analysis
     streams_data, listeners_data = prepare_weekly_song_data(df, include_artist_level)
     
-    # Initialize results list
+    if streams_data.empty:
+        return pd.DataFrame()
+    
+    # Initialize list for song adoption metrics
     song_adoption_list = []
     
     # Calculate metrics for each song
     for song in streams_data['song'].unique():
-        song_data = streams_data[streams_data['song'] == song].copy()
-        if song_data.empty:
+        # Get data for all cities - ensure we're only getting song-level data
+        all_cities_data = df[
+            (df['song'] == song) & 
+            (df['city'].str.lower() == 'all cities') & 
+            (df['measure'] == 'plays') &
+            (df['level'].str.lower() == 'song')  # Only song-level data
+        ].copy()
+        
+        if all_cities_data.empty:
             continue
             
         # Get song ID and release date
-        song_id = song_data['song_id'].iloc[0]
+        song_id = all_cities_data['song_id'].iloc[0]
         release_date = get_song_release_date(song_id)
         if release_date is None:
             continue
         
         # Filter to only include first 12 weeks after release
-        song_data = song_data[song_data['week'] <= release_date + pd.Timedelta(weeks=12)]
-        if song_data.empty:
+        all_cities_data['week'] = pd.to_datetime(all_cities_data['week'].astype(str), format='%Y%m%d')
+        
+        # Convert release_date to pandas Timestamp if it's not already
+        if not isinstance(release_date, pd.Timestamp):
+            release_date = pd.Timestamp(release_date)
+        
+        # Calculate the cutoff date
+        cutoff_date = release_date + pd.Timedelta(weeks=12)
+        
+        # Filter data to only include first 12 weeks after release
+        filtered_data = all_cities_data[all_cities_data['week'] <= cutoff_date]
+        
+        if filtered_data.empty:
             continue
         
+        all_cities_data = filtered_data
+        
+        # Get listener data for this song (All Cities) - ensure song-level data only
+        all_cities_listener_data = df[
+            (df['song'] == song) & 
+            (df['city'].str.lower() == 'all cities') & 
+            (df['measure'] == 'listeners') &
+            (df['level'].str.lower() == 'song')  # Only song-level data
+        ].copy()
+        all_cities_listener_data['week'] = pd.to_datetime(all_cities_listener_data['week'].astype(str), format='%Y%m%d')
+        all_cities_listener_data = all_cities_listener_data[all_cities_listener_data['week'] <= cutoff_date]
+        
         # Calculate peak metrics
-        peak_date = song_data.loc[song_data['current_period'].idxmax()]['week']
-        peak_streams = song_data['current_period'].max()
-        latest_week = song_data['week'].max()
+        peak_date = all_cities_data.loc[all_cities_data['current_period'].idxmax()]['week']
+        peak_streams = all_cities_data['current_period'].max()
+        latest_week = all_cities_data['week'].max()
         
         # Calculate adoption metrics
-        first_activity = song_data[song_data['current_period'] > 0]['week'].min()
+        first_activity = all_cities_data[all_cities_data['current_period'] > 0]['week'].min()
         weeks_to_adopt = (first_activity - release_date).days / 7 if first_activity else None
         
         # Calculate engagement metrics
-        total_streams = song_data['current_period'].sum()
-        total_cities = song_data['city'].nunique()
-        active_cities = song_data[song_data['current_period'] > 0]['city'].nunique()
+        total_streams = all_cities_data['current_period'].sum()
+        avg_weekly_streams = total_streams / len(all_cities_data) if not all_cities_data.empty else 0
         
-        # Get listener data for this song
-        song_listener_data = listeners_data[listeners_data['song'] == song].copy()
-        # Filter listener data to same 12-week window
-        song_listener_data = song_listener_data[song_listener_data['week'] <= release_date + pd.Timedelta(weeks=12)]
-        peak_weekly_listeners = song_listener_data['current_period'].max() if not song_listener_data.empty else 0
+        # Get city-level data for reference
+        city_data = streams_data[streams_data['song'] == song].copy()
+        city_data = city_data[city_data['week'] <= release_date + pd.Timedelta(weeks=12)]
+        total_cities = city_data['city'].nunique()
+        active_cities = city_data[city_data['current_period'] > 0]['city'].nunique()
         
-        # Calculate average weekly streams per listener
-        weekly_metrics = []
-        weekly_listeners = []
-        for week in song_data['week'].unique():
-            week_data = song_data[song_data['week'] == week]
-            week_streams = week_data['current_period'].sum()
-            week_listeners = song_listener_data[song_listener_data['week'] == week]['current_period'].max()
-            weekly_listeners.append(week_listeners)
+        # Get listener data for this song (All Cities)
+        all_cities_listener_data = df[
+            (df['song'] == song) & 
+            (df['city'].str.lower() == 'all cities') & 
+            (df['measure'] == 'listeners') &
+            (df['level'].str.lower() == 'song')
+        ].copy()
+        all_cities_listener_data['week'] = pd.to_datetime(all_cities_listener_data['week'].astype(str), format='%Y%m%d')
+        all_cities_listener_data = all_cities_listener_data[all_cities_listener_data['week'] <= release_date + pd.Timedelta(weeks=12)]
+        peak_weekly_listeners = all_cities_listener_data['current_period'].max() if not all_cities_listener_data.empty else 0
+        avg_weekly_listeners = all_cities_listener_data['current_period'].mean() if not all_cities_listener_data.empty else 0
+        
+        # Calculate weekly streams per listener
+        weekly_streams_per_listener = []
+        
+        for week in all_cities_data['week'].unique():
+            week_streams = all_cities_data[all_cities_data['week'] == week]['current_period'].iloc[0]
+            week_listeners = 0
+            
+            # Check if we have listener data for this week
+            listener_week_data = all_cities_listener_data[all_cities_listener_data['week'] == week]
+            if not listener_week_data.empty:
+                week_listeners = listener_week_data['current_period'].iloc[0]
+            
             if week_listeners > 0:
                 ratio = week_streams / week_listeners
-                weekly_metrics.append(ratio)
+                weekly_streams_per_listener.append(ratio)
         
-        avg_weekly_streams_per_listener = sum(weekly_metrics) / len(weekly_metrics) if weekly_metrics else 0
-        avg_weekly_listeners = sum(weekly_listeners) / len(weekly_listeners) if weekly_listeners else 0
+        # Calculate average of weekly streams per listener
+        avg_weekly_streams_per_listener = sum(weekly_streams_per_listener) / len(weekly_streams_per_listener) if weekly_streams_per_listener else 0
         
         # Calculate peak to total ratio
         peak_to_total_ratio = (peak_streams / total_streams * 100) if total_streams > 0 else 0
         
-        # Calculate retention rate (cities that streamed in last 4 weeks / cities that ever streamed)
-        last_4_weeks = song_data[song_data['week'] >= latest_week - pd.Timedelta(weeks=4)]
+        # Calculate consistency score (cities that streamed in last 4 weeks / cities that ever streamed)
+        last_4_weeks = city_data[city_data['week'] >= latest_week - pd.Timedelta(weeks=4)]
         retained_cities = last_4_weeks[last_4_weeks['current_period'] > 0]['city'].nunique()
-        retention_rate = (retained_cities / active_cities * 100) if active_cities > 0 else 0
+        consistency_score = (retained_cities / active_cities * 100) if active_cities > 0 else 0
         
         # Calculate average streams per active city
         avg_streams_per_city = total_streams / active_cities if active_cities > 0 else 0
@@ -563,6 +597,7 @@ def analyze_song_adoption(df=None, include_artist_level=False):
             'is_still_growing': is_still_growing,
             'peaked_first_week': weeks_to_peak == 0 if weeks_to_peak is not None else False,
             'total_streams': total_streams,
+            'avg_weekly_streams': round(avg_weekly_streams, 1),
             'peak_weekly_listeners': peak_weekly_listeners,
             'avg_weekly_listeners': round(avg_weekly_listeners, 1),
             'avg_weekly_streams_per_listener': round(avg_weekly_streams_per_listener, 1),
@@ -570,111 +605,162 @@ def analyze_song_adoption(df=None, include_artist_level=False):
             'active_cities': active_cities,
             'avg_streams_per_city': round(avg_streams_per_city, 1),
             'peak_to_total_ratio': round(peak_to_total_ratio, 1),
-            'retention_rate': round(retention_rate, 1)
+            'consistency_score': round(consistency_score, 1)
         })
     
     # Create DataFrame from list
     song_adoption_metrics = pd.DataFrame(song_adoption_list)
     
-    # Categorize songs based on adoption speed
-    percentile_33 = song_adoption_metrics['weeks_to_adopt'].quantile(0.33)
-    percentile_67 = song_adoption_metrics['weeks_to_adopt'].quantile(0.67)
+    if song_adoption_metrics.empty:
+        return song_adoption_metrics
     
-    def categorize_song(row):
-        if row['weeks_to_adopt'] <= percentile_33:
-            return 'Quick Adopter'
-        elif row['weeks_to_adopt'] <= percentile_67:
-            return 'Mid Adopter'
+    # Categorize songs based on adoption speed or consistency
+    if 'weeks_to_adopt' in song_adoption_metrics.columns and not song_adoption_metrics['weeks_to_adopt'].isna().all():
+        percentile_33 = song_adoption_metrics['weeks_to_adopt'].quantile(0.33)
+        percentile_67 = song_adoption_metrics['weeks_to_adopt'].quantile(0.67)
+        
+        def categorize_song(row):
+            if pd.isna(row['weeks_to_adopt']):
+                return 'Unknown'
+            if row['weeks_to_adopt'] <= percentile_33:
+                return 'Early Adopter'
+            elif row['weeks_to_adopt'] <= percentile_67:
+                return 'Mid Adopter'
+            else:
+                return 'Late Bloomer'
+        
+        song_adoption_metrics['adoption_category'] = song_adoption_metrics.apply(categorize_song, axis=1)
+    elif 'consistency_score' in song_adoption_metrics.columns and not song_adoption_metrics['consistency_score'].isna().all():
+        percentile_33 = song_adoption_metrics['consistency_score'].quantile(0.33)
+        percentile_67 = song_adoption_metrics['consistency_score'].quantile(0.67)
+        
+        def categorize_song(row):
+            if pd.isna(row['consistency_score']):
+                return 'Unknown'
+            if row['consistency_score'] <= percentile_33:
+                return 'Low Consistency'
+            elif row['consistency_score'] <= percentile_67:
+                return 'Medium Consistency'
+            else:
+                return 'High Consistency'
+        
+        song_adoption_metrics['adoption_category'] = song_adoption_metrics.apply(categorize_song, axis=1)
+    else:
+        # If neither metric is available, categorize based on total streams
+        if 'total_streams' in song_adoption_metrics.columns:
+            percentile_33 = song_adoption_metrics['total_streams'].quantile(0.33)
+            percentile_67 = song_adoption_metrics['total_streams'].quantile(0.67)
+            
+            def categorize_song(row):
+                if pd.isna(row['total_streams']):
+                    return 'Unknown'
+                if row['total_streams'] <= percentile_33:
+                    return 'Low Volume'
+                elif row['total_streams'] <= percentile_67:
+                    return 'Medium Volume'
+                else:
+                    return 'High Volume'
+            
+            song_adoption_metrics['adoption_category'] = song_adoption_metrics.apply(categorize_song, axis=1)
         else:
-            return 'Slow Adopter'
+            # If no metrics are available, set all to Unknown
+            song_adoption_metrics['adoption_category'] = 'Unknown'
     
-    song_adoption_metrics['adoption_category'] = song_adoption_metrics.apply(categorize_song, axis=1)
-    
-    # Print the results
+    # Print summary of metrics and their definitions
     print("\nSong Performance Summary (First 12 Weeks After Release):")
     print("=" * 80)
-    # Select and reorder columns for display
-    display_columns = [
-        'song', 'release_date', 'peak_date', 'peak_streams', 'total_streams',
-        'active_cities', 'avg_streams_per_city', 'avg_weekly_streams_per_listener',
-        'peak_to_total_ratio', 'retention_rate', 'adoption_category'
-    ]
-    print(song_adoption_metrics[display_columns].to_string(index=False))
-    
-    # Print interpretation of metrics
-    print("\nInterpretation Notes:")
-    print("- All metrics are calculated using only the first 12 weeks after release for each song")
+    print("\nKey Metrics:")
     print("- peak_streams: Highest number of streams in a single week")
     print("- total_streams: Total streams in first 12 weeks")
+    print("- avg_weekly_streams: Average streams per week")
     print("- peak_weekly_listeners: Highest number of listeners in any single week")
     print("- avg_weekly_listeners: Average number of listeners per week")
     print("- active_cities: Number of cities that have streamed the song")
     print("- avg_streams_per_city: Average streams per active city")
     print("- avg_weekly_streams_per_listener: Average of (streams/listeners) for each week")
     print("- peak_to_total_ratio: Percentage of total streams that occurred at peak")
-    print("- retention_rate: Percentage of cities that streamed in last 4 weeks")
-    print("- adoption_category: Song's adoption pattern (Quick Adopter, Mid Adopter, Slow Adopter)")
+    print("- consistency_score: Percentage of cities that streamed in last 4 weeks")
+    print("- weeks_to_peak: Number of weeks until peak streaming activity")
+    print("- weeks_to_adopt: Number of weeks until first streaming activity")
+    print("\nAdoption Categories:")
+    print("- Early Adopter: Songs that start streaming within the first 33rd percentile of weeks")
+    print("- Mid Adopter: Songs that start streaming between 33rd and 67th percentile of weeks")
+    print("- Late Bloomer: Songs that start streaming after the 67th percentile of weeks")
+    print("\nConsistency Categories:")
+    print("- High Consistency: Songs with consistency scores above the 67th percentile")
+    print("- Medium Consistency: Songs with consistency scores between 33rd and 67th percentile")
+    print("- Low Consistency: Songs with consistency scores below the 33rd percentile")
+    print("\nVolume Categories:")
+    print("- High Volume: Songs with total streams above the 67th percentile")
+    print("- Medium Volume: Songs with total streams between 33rd and 67th percentile")
+    print("- Low Volume: Songs with total streams below the 33rd percentile")
     
-    print("\nAvailable DataFrame for Further Analysis:")
-    print("- song_adoption_metrics: Song-level metrics including adoption patterns and peak behavior")
-    print("  • Contains: song details, adoption timing, peak behavior, and engagement stats")
+    # Add a log-transformed color column if total_streams exists
+    if 'total_streams' in song_adoption_metrics.columns:
+        song_adoption_metrics['log_total_streams'] = np.log10(song_adoption_metrics['total_streams'] + 1)
+        
+        # Only create the plot if we have the required columns
+        if all(col in song_adoption_metrics.columns for col in ['consistency_score', 'avg_weekly_streams_per_listener']):
+            # Calculate weeks since release for each song
+            current_date = pd.Timestamp.now()
+            song_adoption_metrics['weeks_since_release'] = song_adoption_metrics.apply(
+                lambda row: (current_date - pd.Timestamp(row['release_date'])).days / 7, 
+                axis=1
+            ).round(1)
+            
+            fig = px.scatter(
+                song_adoption_metrics,
+                x='consistency_score',
+                y='avg_weekly_streams_per_listener',
+                color='log_total_streams',
+                hover_name='song',
+                custom_data=['weeks_since_release', 'total_streams', 'adoption_category', 'active_cities', 'peak_to_total_ratio'],
+                color_continuous_scale=px.colors.sequential.Viridis,
+                title='Song Performance: Consistency vs Listener Engagement'
+            )
+
+            # Set colorbar ticks to show original values
+            fig.update_layout(
+                coloraxis_colorbar=dict(
+                    title='Total Streams',
+                    tickvals=[np.log10(x) for x in [100, 1000, 10000, 100000]],
+                    ticktext=[f'{x:,}' for x in [100, 1000, 10000, 100000]],
+                    tickfont=dict(size=16),
+                    title_font=dict(size=18)
+                ),
+                xaxis_title='Consistency Score (%)',
+                yaxis_title='Average Streams per Listener',
+                height=800,
+                showlegend=False,
+                xaxis=dict(tickfont=dict(size=16), title_font=dict(size=18)),
+                yaxis=dict(tickfont=dict(size=16), title_font=dict(size=18))
+            )
+
+            # Update marker size and style
+            fig.update_traces(
+                marker=dict(
+                    size=15,
+                    line=dict(width=1, color='white')
+                )
+            )
+
+            # Add hover template
+            fig.update_traces(
+                hovertemplate="<b>%{hovertext}</b><br>" +
+                             "Consistency Score: %{x:.1f}%<br>" +
+                             "Avg Weekly Streams per Listener: %{y:.1f}<br>" +
+                             "Total Streams: %{customdata[1]:,.0f}<br>" +
+                             "Peak to Total Ratio: %{customdata[4]:.1f}%<br>" +
+                             "Active Cities: %{customdata[3]}<br>" +
+                             "Weeks Since Release: %{customdata[0]:.1f}<br>" +
+                             "Category: %{customdata[2]}<extra></extra>"
+            )
+            
+            # Show the plot
+            fig.show()
     
-    # Add a log-transformed color column
-    song_adoption_metrics['log_total_streams'] = np.log10(song_adoption_metrics['total_streams'] + 1)
-
-    fig = px.scatter(
-        song_adoption_metrics,
-        x='retention_rate',
-        y='avg_weekly_streams_per_listener',
-        color='log_total_streams',
-        hover_name='song',
-        custom_data=['weeks_to_adopt', 'total_streams', 'adoption_category', 'active_cities', 'peak_to_total_ratio'],
-        color_continuous_scale=px.colors.sequential.Viridis,
-        title='Song Performance: Retention vs Listener Engagement'
-    )
-
-    # Set colorbar ticks to show original values
-    fig.update_layout(
-        coloraxis_colorbar=dict(
-            title='Total Streams',
-            tickvals=[np.log10(x) for x in [100, 1000, 10000, 100000]],
-            ticktext=[f'{x:,}' for x in [100, 1000, 10000, 100000]],
-            tickfont=dict(size=16),
-            title_font=dict(size=18)
-        ),
-        xaxis_title='Retention Rate (%)',
-        yaxis_title='Average Streams per Listener',
-        height=800,
-        showlegend=False,
-        xaxis=dict(tickfont=dict(size=16), title_font=dict(size=18)),
-        yaxis=dict(tickfont=dict(size=16), title_font=dict(size=18))
-    )
-
-    # Update marker size and style
-    fig.update_traces(
-        marker=dict(
-            size=15,
-            line=dict(width=1, color='white')
-        )
-    )
-
-    # Add hover template
-    fig.update_traces(
-        hovertemplate="<b>%{hovertext}</b><br>" +
-                     "Retention Rate: %{x:.1f}%<br>" +
-                     "Avg Streams per Listener: %{y:.1f}<br>" +
-                     "Total Streams: %{customdata[1]:,.0f}<br>" +
-                     "Peak to Total Ratio: %{customdata[4]:.1f}%<br>" +
-                     "Active Cities: %{customdata[3]}<br>" +
-                     "Category: %{customdata[2]}<extra></extra>"
-    )
-    
-    # Show the plot
-    fig.show()
-    
-    # Return the DataFrame without displaying it
     return song_adoption_metrics.copy()
 
 if __name__ == "__main__":
-    analyze_peaks()
-    analyze_song_adoption() 
+    analyze_peaks_by_city()
+    analyze_song_adoption_overall() 
