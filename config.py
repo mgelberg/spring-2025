@@ -11,12 +11,15 @@ import glob
 import pandas as pd
 from file_utils import (
     get_file_path,
+    get_csv_path,
     get_file_key,
     ensure_directory_exists,
+    parse_filename,
     PERIOD_TYPES,
     MEASURES,
     GROUP_BY_OPTIONS,
-    LEVELS
+    LEVELS,
+    should_process_file
 )
 
 # Base config for trends page
@@ -285,21 +288,19 @@ def print_scraping_plan(level_choice, data_type):
     """Print the scraping plan based on selected options"""
     print("\n📋 Scraping Plan:")
     
-    # Get existing files to check against
-    existing_files = get_existing_parsed_files()
-    
     if level_choice == 'a':
         periods = raw_month_starts if data_type == 'm' else raw_week_endings
         pending_periods = []
         for period in periods:
-            file_key = get_file_key(
-                'monthly' if data_type == 'm' else 'weekly',
-                'plays',
-                'city',
-                'artist',
-                period
+            html_file = get_file_path(
+                period_type='monthly' if data_type == 'm' else 'weekly',
+                measure='plays',
+                period_value=period,
+                level='artist',
+                song_id='artist',
+                group_by=group_by
             )
-            if file_key not in existing_files:
+            if not os.path.exists(html_file):
                 pending_periods.append(period)
         print(f" Artist Level — {len(pending_periods)} periods to scrape")
     elif level_choice == 's':
@@ -308,14 +309,15 @@ def print_scraping_plan(level_choice, data_type):
             periods = raw_month_starts if data_type == 'm' else get_valid_weeks_for_song(song)
             pending_periods = []
             for period in periods:
-                file_key = get_file_key(
-                    'monthly' if data_type == 'm' else 'weekly',
-                    'plays',
-                    'city',
-                    song_id,
-                    period
+                html_file = get_file_path(
+                    period_type='monthly' if data_type == 'm' else 'weekly',
+                    measure='plays',
+                    period_value=period,
+                    level='song',
+                    song_id=song_id,
+                    group_by=group_by
                 )
-                if file_key not in existing_files:
+                if not os.path.exists(html_file):
                     pending_periods.append(period)
             print(f" {song['name']} — {len(pending_periods)} periods to scrape")
     else:  # both
@@ -323,14 +325,15 @@ def print_scraping_plan(level_choice, data_type):
         periods = raw_month_starts if data_type == 'm' else raw_week_endings
         pending_periods = []
         for period in periods:
-            file_key = get_file_key(
-                'monthly' if data_type == 'm' else 'weekly',
-                'plays',
-                'city',
-                'artist',
-                period
+            html_file = get_file_path(
+                period_type='monthly' if data_type == 'm' else 'weekly',
+                measure='plays',
+                period_value=period,
+                level='artist',
+                song_id='artist',
+                group_by=group_by
             )
-            if file_key not in existing_files:
+            if not os.path.exists(html_file):
                 pending_periods.append(period)
         print(f" Artist Level — {len(pending_periods)} periods to scrape")
         
@@ -340,16 +343,116 @@ def print_scraping_plan(level_choice, data_type):
             periods = raw_month_starts if data_type == 'm' else get_valid_weeks_for_song(song)
             pending_periods = []
             for period in periods:
-                file_key = get_file_key(
-                    'monthly' if data_type == 'm' else 'weekly',
-                    'plays',
-                    'city',
-                    song_id,
-                    period
+                html_file = get_file_path(
+                    period_type='monthly' if data_type == 'm' else 'weekly',
+                    measure='plays',
+                    period_value=period,
+                    level='song',
+                    song_id=song_id,
+                    group_by=group_by
                 )
-                if file_key not in existing_files:
+                if not os.path.exists(html_file):
                     pending_periods.append(period)
             print(f" {song['name']} — {len(pending_periods)} periods to scrape")
+
+def print_parsing_plan(level_choice, data_type):
+    """Print the parsing plan based on selected options"""
+    print("\n📋 Parsing Plan:")
+    
+    if level_choice == 'a':
+        periods = raw_month_starts if data_type == 'm' else raw_week_endings
+        pending_periods = []
+        for period in periods:
+            html_file = get_file_path(
+                period_type='monthly' if data_type == 'm' else 'weekly',
+                measure='plays',
+                period_value=period,
+                level='artist',
+                song_id='artist',
+                group_by=group_by
+            )
+            csv_file = get_csv_path(
+                period_type='monthly' if data_type == 'm' else 'weekly',
+                measure='plays',
+                period_value=period,
+                song_id='artist',
+                group_by=group_by
+            )
+            if os.path.exists(html_file) and not os.path.exists(csv_file):
+                pending_periods.append(period)
+        print(f" Artist Level — {len(pending_periods)} periods to parse")
+    elif level_choice == 's':
+        for song in songs_to_scrape:
+            song_id = song["id"]
+            periods = raw_month_starts if data_type == 'm' else get_valid_weeks_for_song(song)
+            pending_periods = []
+            for period in periods:
+                html_file = get_file_path(
+                    period_type='monthly' if data_type == 'm' else 'weekly',
+                    measure='plays',
+                    period_value=period,
+                    level='song',
+                    song_id=song_id,
+                    group_by=group_by
+                )
+                csv_file = get_csv_path(
+                    period_type='monthly' if data_type == 'm' else 'weekly',
+                    measure='plays',
+                    period_value=period,
+                    song_id=song_id,
+                    group_by=group_by
+                )
+                if os.path.exists(html_file) and not os.path.exists(csv_file):
+                    pending_periods.append(period)
+            print(f" {song['name']} — {len(pending_periods)} periods to parse")
+    else:  # both
+        # Artist level
+        periods = raw_month_starts if data_type == 'm' else raw_week_endings
+        pending_periods = []
+        for period in periods:
+            html_file = get_file_path(
+                period_type='monthly' if data_type == 'm' else 'weekly',
+                measure='plays',
+                period_value=period,
+                level='artist',
+                song_id='artist',
+                group_by=group_by
+            )
+            csv_file = get_csv_path(
+                period_type='monthly' if data_type == 'm' else 'weekly',
+                measure='plays',
+                period_value=period,
+                song_id='artist',
+                group_by=group_by
+            )
+            if os.path.exists(html_file) and not os.path.exists(csv_file):
+                pending_periods.append(period)
+        print(f" Artist Level — {len(pending_periods)} periods to parse")
+        
+        # Song level
+        for song in songs_to_scrape:
+            song_id = song["id"]
+            periods = raw_month_starts if data_type == 'm' else get_valid_weeks_for_song(song)
+            pending_periods = []
+            for period in periods:
+                html_file = get_file_path(
+                    period_type='monthly' if data_type == 'm' else 'weekly',
+                    measure='plays',
+                    period_value=period,
+                    level='song',
+                    song_id=song_id,
+                    group_by=group_by
+                )
+                csv_file = get_csv_path(
+                    period_type='monthly' if data_type == 'm' else 'weekly',
+                    measure='plays',
+                    period_value=period,
+                    song_id=song_id,
+                    group_by=group_by
+                )
+                if os.path.exists(html_file) and not os.path.exists(csv_file):
+                    pending_periods.append(period)
+            print(f" {song['name']} — {len(pending_periods)} periods to parse")
 
 def get_existing_parsed_files():
     """Get a set of already parsed files"""

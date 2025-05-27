@@ -122,13 +122,19 @@ def should_process_file(
     Returns:
         True if the file should be processed, False otherwise
     """
-    if not os.path.exists(file_path) or force:
+    # Always process if force flag is set
+    if force:
         return True
         
-    # Check if file exists but is empty or too small
+    # Process if file doesn't exist
+    if not os.path.exists(file_path):
+        return True
+        
+    # Process if file exists but is empty or too small
     if os.path.getsize(file_path) <= 10:
         return True
         
+    # Don't process if file exists and has content
     return False
 
 def get_file_key(

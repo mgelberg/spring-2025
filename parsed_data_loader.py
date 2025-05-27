@@ -115,9 +115,7 @@ def load_all_csvs(data_dir: str = "parsed csvs") -> Tuple[pd.DataFrame, List[Tup
     
     for file in all_files:
         try:
-            # Check if file is empty or too small
             if os.path.getsize(file) <= 1:
-                print(f"Skipping empty file: {file}")
                 continue
                 
             measure = extract_measure_from_filename(file)    
@@ -126,22 +124,28 @@ def load_all_csvs(data_dir: str = "parsed csvs") -> Tuple[pd.DataFrame, List[Tup
             group_by = extract_group_by_from_filename(file)
             period_type = extract_period_type_from_filename(file)
             
-            df = pd.read_csv(file)
+            df = pd.read_csv(file, index_col=None)
             if df.empty:
-                print(f"Skipping empty dataframe from: {file}")
                 empty_files.append((song_id, week))
                 continue
-                
-            df["grouping"] = group_by
-            df["period_type"] = period_type
+            
+            # If Level column is missing, infer it from the Song field
+            if 'Level' not in df.columns:
+                df['Level'] = df['Song'].apply(lambda x: 'artist' if x == 'Artist Level' else 'song')
+            
+            # Add metadata columns
+            df['period_type'] = period_type
+            df['grouping'] = group_by
+            
+            # Reset index to ensure no duplicate indices
+            df = df.reset_index(drop=True)
+            
             dataframes.append(df)
             
         except pd.errors.EmptyDataError:
-            print(f"Skipping empty file: {file}")
             empty_files.append((song_id, week))
             continue
         except Exception as e:
-            print(f"Error reading file {file}: {str(e)}")
             continue
     
     if empty_files:
@@ -150,12 +154,14 @@ def load_all_csvs(data_dir: str = "parsed csvs") -> Tuple[pd.DataFrame, List[Tup
             for song_id, week in empty_files:
                 command = f"python run-export.py --force {week} {song_id}\n"
                 f.write(command)
-        print(f"\nEmpty files list saved to empty_files_to_rescrape.txt")
 
     if not dataframes:
         raise ValueError("No valid data files were found!")
-        
-    return pd.concat(dataframes, ignore_index=True), empty_files
+    
+    # Combine all dataframes and ensure no duplicate indices
+    combined_df = pd.concat(dataframes, ignore_index=True)
+    
+    return combined_df, empty_files
 
 def prepare_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     """

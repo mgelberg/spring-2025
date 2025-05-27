@@ -15,6 +15,7 @@ from config import (
     print_progress,
     build_pending_scrapes,
     print_scraping_plan,
+    print_parsing_plan,
     get_existing_parsed_files
 )
 import time
@@ -147,6 +148,9 @@ def main():
         
         driver.quit()
         print("\n🎉 All scraping complete.")
+
+    # Print parsing plan
+    print_parsing_plan(level_choice, data_type)
 
     # Parse files
     parse_success = True
