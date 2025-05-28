@@ -5,13 +5,15 @@ from bs4 import BeautifulSoup
 from config import (
     songs_to_scrape,
     get_common_parser,
-    get_song_id_for_level
+    get_song_id_for_level,
+    get_existing_parsed_files
 )
 from file_utils import (
     get_file_path,
     get_csv_path,
     get_file_key,
     ensure_directory_exists
+
 )
 import argparse
 import os
